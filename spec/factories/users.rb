@@ -57,10 +57,10 @@ FactoryGirl.define do
       last_name 'Константинопольский###'
       first_name 'Константин_123'
       email 'test@mail.com_ДА'
-      gender 'male_no'
+      gender 'male'
       password '123'
       password_confirmation '123'
-      role 'superadmin_no'
+      role 'user'
     end
   end
 end

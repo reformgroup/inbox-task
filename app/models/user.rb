@@ -24,6 +24,9 @@
 #
 
 class User < ApplicationRecord
+  include Searchable
+  include Filterable
+  include Sortable
   include Userstampable::Stampable
   include Userstampable::Stamper
   
@@ -49,14 +52,21 @@ class User < ApplicationRecord
   enum gender: [:male, :female, :other]
   enum role: [:admin, :company_user, :user]
      
-  validates :last_name, presence: true, length: { maximum: 50 }, format: { with: VALID_NAME_REGEX }
-  validates :first_name, presence: true, length: { maximum: 50 }, format: { with: VALID_NAME_REGEX }
-  validates :email, presence: true, length: { maximum: 100 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :last_name, presence: true, length: { maximum: 50 }, 
+            format: { with: VALID_NAME_REGEX }
+  validates :first_name, presence: true, length: { maximum: 50 }, 
+            format: { with: VALID_NAME_REGEX }
+  validates :email, presence: true, length: { maximum: 100 }, 
+            format: { with: VALID_EMAIL_REGEX }, 
+            uniqueness: { case_sensitive: false }
   validates :gender, presence: true, inclusion: { in: User.genders.keys }
-  validates_date :birth_date, presence: true, on_or_before: lambda { User.not_younger }, on_or_after: lambda { User.not_older }
+  validates_date :birth_date, presence: true, 
+                  on_or_before: lambda { User.not_younger }, 
+                  on_or_after: lambda { User.not_older }
   validates :password, presence: true, length: { minimum: 6 }, if: :password
   validates :password_confirmation, presence: true, if: :password_confirmation
-  validates :role, presence: true, inclusion: { in: User.roles.keys }, if: :role
+  validates :role, presence: true, 
+            inclusion: { in: User.roles.keys }, if: :role
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   before_save { email.downcase! }
