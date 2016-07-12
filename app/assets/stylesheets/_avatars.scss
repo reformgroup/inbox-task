@@ -1,0 +1,25 @@
+// Avatar images
+img.avatar, div.avatar {
+	background-size: cover;
+	background-position: center;
+	border: 1px solid $gray-lighter;
+}
+
+img.avatar.avatar-original, div.avatar.avatar-original {
+	width: 7.625rem; // 120px + 1px border * 2
+	height: 7.625rem; // 120px + 1px border * 2
+}
+
+img.avatar.avatar-medium, div.avatar.avatar-medium {
+	width: 3.25rem; // 50px + 1px border * 2
+	height: 3.25rem; // 50px + 1px border * 2
+}
+
+img.avatar.avatar-thumb, div.avatar.avatar-thumb {
+	width: 2.375rem; // 38px + 1px border * 2
+	height: 2.375rem; // 38px + 1px border * 2
+}
+
+.table td.avatar {
+	width: 3.125rem; // 50px
+}
