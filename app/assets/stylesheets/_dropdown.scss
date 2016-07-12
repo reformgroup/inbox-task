@@ -1,0 +1,19 @@
+//Dropdowns
+.dropdown.default-link-style {
+  display: inline-block;
+  a.dropdown-toggle {
+    outline: none;
+    padding: 5px; 
+    border: 0; 
+    box-sizing: none; 
+    background-color: transparent;
+    padding: 0;
+    vertical-align: baseline;
+  }
+}
+
+.dropdown, .btn-group {
+  .dropdown-item.current {
+    color: $brand-primary;
+  }
+}

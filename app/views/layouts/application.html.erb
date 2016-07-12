@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>InboxTask</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+  <%= render 'layouts/base_header' %>
+  <div class='container content'>
+    <div class='row'>
+      <div class='col-<%= default_grid_system %>-12'>
+        <%= render 'layouts/flash' %>
+      </div>
+    </div>
+    <div class='row'>
+      <%= yield %>
+    </div>
+    
+  </div>
+  <footer id='footer' class='footer footer-dark'>
+    <div class='container'>
+      <%= render 'layouts/debug' %>
+    </div>
+  </footer>
+</body>
 </html>
