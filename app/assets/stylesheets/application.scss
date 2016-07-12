@@ -22,7 +22,8 @@
 @import "mixins";
 
 // Core CSS
-@import "typography";
+@import "reboot";
+@import "type";
 
 // Components
 @import "avatars";
@@ -34,61 +35,3 @@
 @import "pagination";
 @import "sidebar";
 @import "table";
-
-// Colors
-.bg-white {
-  background-color: #FFF;
-}
-
-// Universal
-html {
-  position: relative;
-  min-height: 100%;
-	overflow-y: scroll;
-}
-
-body {
-  background-color: $gray-lightest;
-  .content {
-	  padding-top: 70px; /* Margin top by navbar height */
-  }
-}
-
-.display-block {
-  display: block;
-}
-
-.display-inline-block {
-  display: inline-block;
-}
-
-// File upload
-.btn-file {
-	position: relative;
-	overflow: hidden;
-}
-
-.btn-file input[type = file] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	min-width: 100%;
-	min-height: 100%;
-	text-align: right;
-	filter: alpha(opacity = 0);
-	opacity: 0;
-	outline: none;
-	background: white;
-	cursor: inherit;
-	display: block;
-}
-
-// Miscellaneous
-.debug_dump {
-	clear: both;
-	float: left;
-	width: 100%;
-	margin-top: 0.9375rem; // 15px
-  @include box_sizing;
-  color: $footer-dark-color;
-}
