@@ -9,121 +9,38 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
  */
 
+// Vendor import
 @import "import";
 @import "bootstrap";
-@import "variables";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "sidebar";
+
+// Core variables and mixins
+@import "variables";
+@import "mixins";
+
+// Core CSS
+@import "typography";
+
+// Components
+@import "avatars";
 @import "card";
-@import "pagination";
-@import "table";
+@import "dropdown";
+@import "footer";
 @import "forms";
 @import "navbar";
-
-
-// Mixins, variables, etc.
-
-@mixin box_sizing {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-// Avatar images
-
-img.avatar, div.avatar {
-	background-size: cover;
-	background-position: center;
-	border: 1px solid $gray-lighter;
-}
-
-img.avatar.avatar-original, div.avatar.avatar-original {
-	width: 7.625rem; // 120px + 1px border * 2
-	height: 7.625rem; // 120px + 1px border * 2
-}
-
-img.avatar.avatar-medium, div.avatar.avatar-medium {
-	width: 3.25rem; // 50px + 1px border * 2
-	height: 3.25rem; // 50px + 1px border * 2
-}
-
-img.avatar.avatar-thumb, div.avatar.avatar-thumb {
-	width: 2.375rem; // 38px + 1px border * 2
-	height: 2.375rem; // 38px + 1px border * 2
-}
-
-.table td.avatar {
-	width: 3.125rem; // 50px
-}
-
-// Navbar
-
-.navbar-main {
-  border-bottom: $border-width solid $navbar-main-border-color;
-  .nav-user > .nav-link {
-    padding: 0rem;
-  }
-}
-
-// Footer
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%; 
-}
-
-.footer-dark {
-  background-color: $gray-dark;
-}
+@import "pagination";
+@import "sidebar";
+@import "table";
 
 // Colors
-
 .bg-white {
   background-color: #FFF;
 }
 
-// Typography
-
-html {
-  font-weight: 300;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
-}
-
-.btn, .dropdown-item  {
-  font-weight: 300;
-}
-
-.text-clip {
-  white-space: nowrap; /* Do not white-space */
-  overflow: hidden; /* Cropped anything that does not fit in the area */
-  text-overflow: ellipsis; /* Add a dot after cropped text */
-}
-
-a.black {
-  color: #000;
-  @include hover-focus {
-    color: $brand-primary;
-  }
-}
-
-a.text-muted {
-  @include hover-focus {
-    color: $brand-primary;
-  }
-}
-
 // Universal
-
 html {
   position: relative;
   min-height: 100%;
@@ -145,15 +62,7 @@ body {
   display: inline-block;
 }
 
-// Forms
-
-select.date-select {
-	display: inline-block;
-	width: auto;
-}
-
 // File upload
-
 .btn-file {
 	position: relative;
 	overflow: hidden;
@@ -175,7 +84,6 @@ select.date-select {
 }
 
 // Miscellaneous
-
 .debug_dump {
 	clear: both;
 	float: left;
@@ -183,25 +91,4 @@ select.date-select {
 	margin-top: 0.9375rem; // 15px
   @include box_sizing;
   color: $footer-dark-color;
-}
-
-//Dropdowns
- 
-.dropdown.default-link-style {
-  display: inline-block;
-  a.dropdown-toggle {
-    outline: none;
-    padding: 5px; 
-    border: 0; 
-    box-sizing: none; 
-    background-color: transparent;
-    padding: 0;
-    vertical-align: baseline;
-  }
-}
-
-.dropdown, .btn-group {
-  .dropdown-item.current {
-    color: $brand-primary;
-  }
 }
