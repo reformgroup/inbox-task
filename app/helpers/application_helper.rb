@@ -73,6 +73,10 @@ module ApplicationHelper
     "col-#{default_grid_system}-offset-3"
   end
   
+  def default_mix_col_offset_class
+    "col-#{medium_grid_system}-offset-3 col-#{default_grid_system}-offset-2"
+  end
+  
   def default_mix_small_col_class
     "col-#{medium_grid_system}-3 col-#{default_grid_system}-2"
   end
