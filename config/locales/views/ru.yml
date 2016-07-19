@@ -8,6 +8,7 @@ ru:
     signup: "Зарегистрировать"
     yes: "Да"
     no: "Нет"
+    back: "Назад"
     search: "Найти"
   placeholder:
     search: "Поиск..."

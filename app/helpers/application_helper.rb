@@ -49,40 +49,45 @@ module ApplicationHelper
     raise ActionController::RoutingError.new 'Not Found'
   end
   
-  def default_grid_system
-    'xl'
+  # Grid system
+  def grid(prefix = nil)
+    prefix || 'xl'
   end
   
-  def medium_grid_system
-    'ld'
-  end
-
-  def default_col_class
-    "col-#{default_grid_system}-12"
+  def column(col = 12)
+    col || 12
   end
   
-  def default_small_col_class
-    "col-#{default_grid_system}-3"
-  end
-
-  def default_large_col_class
-    "col-#{default_grid_system}-9"
+  def column_class(col = nil, prefix = nil)
+    "col-#{grid(prefix)}-#{column(col)}"
   end
   
-  def default_large_col_offset_class
-    "col-#{default_grid_system}-offset-3"
+  def column_offset_class(col = nil, prefix = nil)
+    "col-#{grid(prefix)}-offset-#{column(col)}"
   end
   
-  def default_mix_col_offset_class
-    "col-#{medium_grid_system}-offset-3 col-#{default_grid_system}-offset-2"
+  def small_column_class
+    column_class(3)
   end
   
-  def default_mix_small_col_class
-    "col-#{medium_grid_system}-3 col-#{default_grid_system}-2"
+  def small_column_offset_class
+    column_offset_class(3)
   end
   
-  def default_mix_large_col_class
-    "col-#{medium_grid_system}-9 col-#{default_grid_system}-10"
+  def large_column_class
+    column_class(9)
+  end
+  
+  def dynamic_small_column_class
+    "#{column_class(4, 'ld')} #{column_class(3)}"
+  end
+  
+  def dynamic_small_column_offset_class
+    "#{column_offset_class(4, 'ld')} #{column_offset_class(3)}"
+  end
+  
+  def dynamic_large_column_class
+    "#{column_class(8, 'ld')} #{column_class(9)}"
   end
   
   def error_messages(object, method = nil)
