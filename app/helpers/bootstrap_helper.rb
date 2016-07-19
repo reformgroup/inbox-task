@@ -1,5 +1,46 @@
 module BootstrapHelper
   
+  # Grid system
+  def grid(prefix = nil)
+    prefix || 'xl'
+  end
+  
+  def column(col = 12)
+    col || 12
+  end
+  
+  def column_class(col = nil, prefix = nil)
+    "col-#{grid(prefix)}-#{column(col)}"
+  end
+  
+  def column_offset_class(col = nil, prefix = nil)
+    "col-#{grid(prefix)}-offset-#{column(col)}"
+  end
+  
+  def small_column_class
+    column_class(3)
+  end
+  
+  def small_column_offset_class
+    column_offset_class(3)
+  end
+  
+  def large_column_class
+    column_class(9)
+  end
+  
+  def dynamic_small_column_class
+    "#{column_class(4, 'ld')} #{column_class(3)}"
+  end
+  
+  def dynamic_small_column_offset_class
+    "#{column_offset_class(4, 'ld')} #{column_offset_class(3)}"
+  end
+  
+  def dynamic_large_column_class
+    "#{column_class(8, 'ld')} #{column_class(9)}"
+  end
+  
   # ==== Examples
   #   search_tag(users_path, id: "users-search")
   #   # => <form id="users-search" role="search" action="/users" accept-charset="UTF-8" method="get">

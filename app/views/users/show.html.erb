@@ -1,49 +1,48 @@
-<p id="notice"><%= notice %></p>
+<% provide :title, @user.name %>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+<div class='block-header'><h5><%= t '.title' %></h5></div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>Birth date:</strong>
-  <%= @user.birth_date %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Remember digest:</strong>
-  <%= @user.remember_digest %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<p>
-  <strong>Avatar:</strong>
-  <%= @user.avatar %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class='block-content'>
+  <div class='row'>
+    <div class='<%= column_class %>'>
+      <div class='text-center'>
+        <%= image_tag @user.avatar.url, class: 'img-circle avatar avatar-original center-block' %>
+      </div>
+      <h2 class='text-xs-center'><%= @user.name %></h2>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class='row'>
+    <div class='<%= dynamic_small_column_class %>'>
+      <span class='text-muted'><%= User.human_attribute_name 'email' %>
+    </div><!-- /.col -->
+    <div class='<%= dynamic_large_column_class %>'>
+      <%= mail_to @user.email, nil, subject: app_name %>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class='row'>
+    <div class='<%= dynamic_small_column_class %>'>
+      <span class='text-muted'><%= User.human_attribute_name 'birth_date' %>
+    </div><!-- /.col -->
+    <div class='<%= dynamic_large_column_class %>'>
+      <%= l @user.birth_date %> (<%= @user.age %>)
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class='row'>
+    <div class='<%= dynamic_small_column_class %>'>
+      <span class='text-muted'><%= User.human_attribute_name 'gender' %>
+    </div><!-- /.col -->
+    <div class='<%= dynamic_large_column_class %>'>
+      <%= User.human_attribute_name "gender.#{@user.gender}"%>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.block-content -->
+<div class='block-content'>
+  
+  <div class='row'>
+    <div class='<%= column_class %>'>
+      <hr>
+      <%= link_to t('buttons.edit'), edit_user_path(@user), { class: 'btn btn-primary', role: 'button' } %>
+      <%= link_to t('buttons.back'), users_path, { class: 'btn btn-secondary', role: 'button' } %>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.block-content -->
