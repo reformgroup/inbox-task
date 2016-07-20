@@ -2,11 +2,13 @@ ru:
   activerecord:
     models:
       user:
+        name: Пользователи
         few: Пользователя
         many: Пользователей
         one: Пользователь
         other: Пользователя
       company:
+        name: Компании
         few: Компании
         many: Компаний
         one: Компания

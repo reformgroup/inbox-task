@@ -79,12 +79,12 @@ ru:
       sort_by_name: "по имени"
       sort_by_created_at: "по дате создания"
     show:
-      title: "Профиль пользователя"
+      title: "Профиль"
       edit_button: "Редактировать"
     new:
       title: "Новый пользователь"
     edit:
-      title: "Редактирование профиля пользователя"
+      title: "Редактирование профиля"
     form:
       confirm:
         delete:

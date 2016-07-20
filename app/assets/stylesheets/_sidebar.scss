@@ -8,7 +8,7 @@
 /* Toggle Styles */
 
 .sidebar-content {
-  padding-top: 20px; /* Margin top by navbar height */
+  padding-top: 30px; /* Padding top by navbar height */
 }
 
 #wrapper {
@@ -31,7 +31,7 @@
   height: 100%;
   margin-left: -$sidebar-width;
   overflow-y: auto;
-  background: #f6f6f6;
+  background: $gray-lightest;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -78,8 +78,7 @@
 
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #fff;
-  background: $gray-dark;
+  background: darken($gray-lightest, 5%);
 }
 
 .sidebar-nav li a:active,
@@ -121,6 +120,10 @@
   #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
+  }
+  .sidebar-content {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
