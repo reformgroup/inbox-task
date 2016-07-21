@@ -16,9 +16,8 @@ ru:
     attributes:
       user:
         first_name: "Имя"
-        middle_name: "Отчество"
         last_name: "Фамилия"
-        email: "Адрес электронной почты"
+        email: "Электронная почта"
         birth_date: "Дата рождения"
         gender: "Пол"
         role: "Доступ"

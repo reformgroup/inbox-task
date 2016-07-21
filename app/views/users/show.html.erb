@@ -1,10 +1,10 @@
 <% provide :title, @user.name %>
 
-<h6 class="text-muted"><%= t 'activerecord.models.user.name' %></h6><h2><%= t '.title' %></h2>
-<hr class"m-b-3">
-<div class='row m-t-3'>
+<h6 class='text-muted'><%= t 'activerecord.models.user.name' %></h6><h2><%= t '.title' %></h2>
+<hr class='m-b-3'>
+<div class='row m-b-3'>
   <div class='col-<%= grid %>-3'>
-    <div class='text-center'>
+    <div class='center-block'>
       <%= image_tag @user.avatar.url, class: 'img-circle avatar avatar-original center-block' %>
     </div>
   </div><!-- /.col -->
@@ -38,10 +38,9 @@
     </div><!-- /.row -->
   </div><!-- /.col -->
 </div><!-- /.row -->
-
+<hr class='m-y-3'>
 <div class='block-content row'>
   <div class='<%= column_class %>'>
-    <hr>
     <%= link_to t('buttons.edit'), edit_user_path(@user), { class: 'btn btn-primary', role: 'button' } %>
   </div><!-- /.col -->
 </div><!-- /.block-content.row -->
