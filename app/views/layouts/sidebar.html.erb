@@ -11,12 +11,12 @@
 <body>
   <div id='wrapper'>
     <%= render 'layouts/sidebar_menu' %>
-
     <div id='page-content-wrapper'>
       <%= render 'layouts/sidebar_header' %>
       <div class='sidebar-content'>
         <div class='container'>
           <%= render 'layouts/flash' %>
+          <%= cookies[:sidebar_hidden] %>
           <%= yield %>
         </div>
       </div>
