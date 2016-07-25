@@ -1,43 +1,41 @@
-<p id="notice"><%= notice %></p>
+<% provide :title, t('.title') %>
 
-<h1>Users</h1>
+<h6 class='text-muted'><%= t 'activerecord.models.user.name' %></h6>
+<h2><%= t '.title' %></h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Last name</th>
-      <th>First name</th>
-      <th>Email</th>
-      <th>Gender</th>
-      <th>Birth date</th>
-      <th>Password digest</th>
-      <th>Remember digest</th>
-      <th>Role</th>
-      <th>Avatar</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.last_name %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.gender %></td>
-        <td><%= user.birth_date %></td>
-        <td><%= user.password_digest %></td>
-        <td><%= user.remember_digest %></td>
-        <td><%= user.role %></td>
-        <td><%= user.avatar %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<hr class='m-b-3'>
+<div class='row m-b-3'>
+  <div class='col-<%= grid %>-6'>
+    <%= search_tag users_path, id: 'users-search' %>
+  </div><!-- /.col -->
+  <div class='col-<%= grid %>-6'>
+    <div class='pull-right'>
+      <%= link_to t('.add_user_link'), new_user_path, class: 'btn btn-secondary' %>
+    </div>
+  </div><!-- /.col -->
+</div><!-- /.row -->
+<div class='row m-t-1 m-b-2'>
+  <div class='<%= column_class %>'>
+    <%= link_sort_tag(:sort, main_class: 'default-link-style', selected_in_title: true) do %>
+      <%= option_for_sort(:last_name, t('.sort_by_name'), default: true) %>
+      <%= option_for_sort(:created_at, t('.sort_by_created_at')) %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+  </div><!-- /.col -->
+</div><!-- /.row -->
+<div class='row'>
+  <table class='table v-align'>
+    <tbody>
+      <% @users.each do |user| %>
+        <%= render 'item', item: user %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class='<%= column_class %>'>
+    <div class='pagination-block'>
+      <%= will_paginate @users, inner_window: 2, outer_window: 1 %>
+      <div class='pagination-info text-muted'>
+        <small><%= page_entries_info @users, model: User, html: false %></small>
+      </div><!-- /.pagination-info -->
+    </div><!-- /.pagination-block -->
+  </div><!-- /.col -->
+</div><!-- /.row -->
