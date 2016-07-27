@@ -64,25 +64,32 @@
   list-style: none;
 }
 
-.sidebar-nav li {
+.sidebar-nav .sidebar-nav-header {
+  padding-left: 20px;
+  display: block;
+  margin-top: 2em;
+  color: $text-muted;
+}
+
+.sidebar-nav .sidebar-nav-item {
 //  text-indent: 20px;
   line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav .sidebar-nav-item a {
   padding-left: 20px;
   display: block;
   text-decoration: none;
   color: #000;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav .sidebar-nav-item a:hover {
   text-decoration: none;
   background: darken($gray-lightest, 5%);
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
+.sidebar-nav .sidebar-nav-item a:active,
+.sidebar-nav .sidebar-nav-item a:focus {
   text-decoration: none;
 }
 

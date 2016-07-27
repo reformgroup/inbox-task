@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   
   # GET /users
   def index
-    @users = User.search(params[:search], :last_name, :first_name, :middle_name, :email).sort(params[:sort], params[:direction]).paginate(page: params[:page])
+    @users = User.search(params[:search], :last_name, :first_name, :email).sort(params[:sort], params[:direction]).paginate(page: params[:page])
   end
 
   # GET /users/1
