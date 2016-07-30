@@ -1,22 +1,22 @@
 <div id='sidebar-wrapper'>
   <ul class='sidebar-nav'>
-    <li class='sidebar-nav-item sidebar-brand'>
+    <li class='nav-item nav-brand'>
       <%= link_to app_name, root_path %>
     </li>
-    <li class='sidebar-nav-item'>
+    <li class='nav-item'>
       <%= link_to icon('briefcase', t('.companies'), class: 'fa-fw'), companies_path %>
     </li>
-    <li class='sidebar-nav-item'>
+    <li class='nav-item'>
       <%= link_to icon('users', t('.teams'), class: 'fa-fw'), teams_path %>
     </li>
-    <li class='sidebar-nav-item'>
+    <li class='nav-item'>
       <%= link_to icon('user', t('.users'), class: 'fa-fw'), users_path %>
-    </li class='sidebar-nav-item'>
-    <div class='sidebar-nav-header'>
+    </li class='nav-item'>
+    <div class='nav-header'>
       Settings
     </div>
     
-    <li class='sidebar-nav-item'>
+    <li class='nav-submenu-item-1'>
       <%= link_to icon('language', current_locale_name, class: 'fa-fw'), 
         '#submenu-1', 
         'data-toggle': 'collapse',
@@ -24,10 +24,10 @@
         'aria-expanded': 'false',
         'aria-controls': 'submenu-1' %>
     </li>
-    <div id='submenu-1' class='sidebar-nav-submenu collapse' aria-labelledby='submenu-1'>
+    <div id='submenu-1' class='nav-submenu collapse' aria-labelledby='submenu-1'>
       <ul>
         <% locale_list.each do |local_key, locale_name| %>
-          <li>
+          <li class='nav-item-1'>
             <%= link_to locale_name, { locale: local_key }, class: 'dropdown-item' %>
           </li>
         <% end %>
@@ -35,3 +35,14 @@
     </div>
   </ul>
 </div>
+
+<!-- nav-item
+nav-item
+nav-submenu-item
+nav-submenu
+  nav-item
+  nav-item
+  nav-submenu-item
+  nav-submenu
+    nav-item
+    nav-item -->

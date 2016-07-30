@@ -21,7 +21,13 @@ $card-border-radius-inner: 0 !default;
 
 // Sidebar
 
+$sidebar-content-padding-y: 1rem !default;
 $sidebar-width: 300px;
+$sidebar-item-padding-x: 1rem !default;
+$sidebar-nav-submenu-padding-left: .5rem !default;
+$sidebar-nav-header-margin-top: 1rem !default;
+$sidebar-nav-submenu-level-max: 5;
+$zindex-sidebar-wrapper:  1000 !default;
 
 //
 //== Colors

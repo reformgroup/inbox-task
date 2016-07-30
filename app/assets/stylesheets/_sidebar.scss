@@ -1,22 +1,24 @@
-/*!
-* Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
-* Code licensed under the Apache License v2.0.
-* For details, see http://www.apache.org/licenses/LICENSE-2.0.
-*/
+// Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+// Code licensed under the Apache License v2.0.
+// For details, see http://www.apache.org/licenses/LICENSE-2.0.
 
+// Toggle Styles
 
-/* Toggle Styles */
-
-.sidebar-content {
-  padding-top: 30px; /* Padding top by navbar height */
-}
-
-#wrapper {
-  padding-left: 0;
+%transition {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+.sidebar-content {
+  padding-top: $sidebar-content-padding-y; /* Padding top by navbar height */
+  padding-bottom: $sidebar-content-padding-y;
+}
+
+#wrapper {
+  padding-left: 0;
+  @extend %transition;
 }
 
 #wrapper.toggled {
@@ -24,7 +26,7 @@
 }
 
 #sidebar-wrapper {
-  z-index: 1000;
+  z-index: $zindex-sidebar-wrapper;
   position: fixed;
   left: $sidebar-width;
   width: 0;
@@ -32,10 +34,7 @@
   margin-left: -$sidebar-width;
   overflow-y: auto;
   background: $gray-lightest;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  @extend %transition;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -52,9 +51,7 @@
   margin-right: -$sidebar-width;
 }
 
-
-/* Sidebar Styles */
-
+// Sidebar Styles
 .sidebar-nav {
   position: absolute;
   top: 0;
@@ -64,48 +61,62 @@
   list-style: none;
 }
 
-.sidebar-nav .sidebar-nav-header {
-  padding-left: 20px;
+// Sidebar header
+.sidebar-nav .nav-header {
+  padding-left: $sidebar-item-padding-x;
+  padding-right: $sidebar-item-padding-x;
   display: block;
-  margin-top: 2em;
+  margin-top: $sidebar-nav-header-margin-top;
   color: $text-muted;
 }
 
-.sidebar-nav .sidebar-nav-item {
-//  text-indent: 20px;
+// Sidebar submenu
+.sidebar-nav {
+  @for $i from 1 through $sidebar-nav-submenu-level-max {
+    .nav-submenu-item-#{$i} {
+      padding-left: $sidebar-item-padding-x + ($sidebar-nav-submenu-padding-left * ($i - 1));
+    }
+    .nav-item-#{$i} {
+      padding-left: $sidebar-item-padding-x + ($sidebar-nav-submenu-padding-left * $i);
+    }
+  }
+}
+
+// Sidebar item
+.sidebar-nav .nav-item {
+  // text-indent: 20px;
   line-height: 40px;
+  
+  a {
+    padding-left: $sidebar-item-padding-x;
+    padding-right: $sidebar-item-padding-x;
+    display: block;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    background: darken($gray-lightest, 5%);
+  }
+  
+  a:active,
+  a:focus {
+    text-decoration: none;
+  }
 }
 
-.sidebar-nav .sidebar-nav-item a {
-  padding-left: 20px;
-  display: block;
-  text-decoration: none;
-  color: #000;
-}
-
-.sidebar-nav .sidebar-nav-item a:hover {
-  text-decoration: none;
-  background: darken($gray-lightest, 5%);
-}
-
-.sidebar-nav .sidebar-nav-item a:active,
-.sidebar-nav .sidebar-nav-item a:focus {
-  text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
+// Sidebar brand
+.sidebar-nav .nav-brand {
   height: 65px;
   font-size: 18px;
   line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-  color: #999999;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-  color: #999999;
-  background: none;
+  
+  a,
+  a:hover, {
+    color: $text-muted;
+    background: none;
+  }
 }
 
 @media(min-width:768px) {
@@ -129,8 +140,8 @@
     margin-right: 0;
   }
   .sidebar-content {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -138,8 +149,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   height: 500px;
-  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background-size: cover;
 }
