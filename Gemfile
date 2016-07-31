@@ -64,3 +64,9 @@ gem 'font-awesome-sass', '~> 4.6', '>= 4.6.2'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'validates_timeliness', '~> 4.0', '>= 4.0.2'
 gem 'will_paginate', '~> 3.1'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+# Bootstrap tooltips and popovers depend on tether for positioning
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end

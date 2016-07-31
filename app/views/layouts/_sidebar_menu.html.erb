@@ -28,7 +28,7 @@
       <ul>
         <% locale_list.each do |local_key, locale_name| %>
           <li class='nav-item-1'>
-            <%= link_to locale_name, { locale: local_key }, class: 'dropdown-item' %>
+            <%= link_to locale_name, { locale: local_key } %>
           </li>
         <% end %>
       </ul>

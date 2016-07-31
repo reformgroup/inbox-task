@@ -11,12 +11,12 @@
 
 .navbar-toggler {
   border: 0;
-  padding: 9px 12px 9px 0;
+  padding: .5625rem .75rem .5625rem 0;
 }
 
 @media(min-width:768px) {
   .navbar-main {
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
   }
 }

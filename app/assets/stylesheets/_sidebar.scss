@@ -23,6 +23,15 @@
 
 #wrapper.toggled {
   padding-left: $sidebar-width;
+  
+  #sidebar-wrapper {
+    width: $sidebar-width;
+  }
+  
+  #page-content-wrapper {
+    position: absolute;
+    margin-right: -$sidebar-width;
+  }
 }
 
 #sidebar-wrapper {
@@ -37,18 +46,9 @@
   @extend %transition;
 }
 
-#wrapper.toggled #sidebar-wrapper {
-  width: $sidebar-width;
-}
-
 #page-content-wrapper {
   width: 100%;
   position: absolute;
-}
-
-#wrapper.toggled #page-content-wrapper {
-  position: absolute;
-  margin-right: -$sidebar-width;
 }
 
 // Sidebar Styles
@@ -56,6 +56,12 @@
   position: absolute;
   top: 0;
   width: $sidebar-width;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -73,36 +79,38 @@
 // Sidebar submenu
 .sidebar-nav {
   @for $i from 1 through $sidebar-nav-submenu-level-max {
-    .nav-submenu-item-#{$i} {
+    .nav-submenu-item-#{$i} a {
       padding-left: $sidebar-item-padding-x + ($sidebar-nav-submenu-padding-left * ($i - 1));
     }
-    .nav-item-#{$i} {
+    .nav-item-#{$i} a {
       padding-left: $sidebar-item-padding-x + ($sidebar-nav-submenu-padding-left * $i);
     }
   }
 }
 
 // Sidebar item
-.sidebar-nav .nav-item {
-  // text-indent: 20px;
-  line-height: 40px;
+.sidebar-nav {
+  .nav-item, .nav-item-1, .nav-item-2, .nav-item-3, .nav-item-4, .nav-item-5 {
+    // text-indent: 20px;
+    line-height: 40px;
   
-  a {
-    padding-left: $sidebar-item-padding-x;
-    padding-right: $sidebar-item-padding-x;
-    display: block;
-    text-decoration: none;
-    color: #000;
-  }
+    a {
+      padding-left: $sidebar-item-padding-x;
+      padding-right: $sidebar-item-padding-x;
+      display: block;
+      text-decoration: none;
+      color: #000;
+    }
   
-  a:hover {
-    text-decoration: none;
-    background: darken($gray-lightest, 5%);
-  }
+    a:hover {
+      text-decoration: none;
+      background: darken($gray-lightest, 5%);
+    }
   
-  a:active,
-  a:focus {
-    text-decoration: none;
+    a:active,
+    a:focus {
+      text-decoration: none;
+    }
   }
 }
 
@@ -140,8 +148,8 @@
     margin-right: 0;
   }
   .sidebar-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: .9375rem;
+    padding-right: .9375rem;
   }
 }
 
