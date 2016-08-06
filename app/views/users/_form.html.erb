@@ -25,7 +25,7 @@
       <div class='form-group row'>
         <%= f.label :birth_date, class: "#{dynamic_small_column_class} form-control-label" %>
         <div class='<%= dynamic_large_column_class %>'>
-        	<%= f.date_select :birth_date, { start_year: User.not_younger.year, end_year: User.not_older.year, prompt: true }, class: 'form-control c-select date-select' %>
+        	<%= f.date_select :birth_date, { start_year: User.not_younger.year, end_year: User.not_older.year, prompt: true }, class: 'form-control custom-select date-select' %>
         	<%= error_messages f.object, :birth_date %>
         </div>
       </div>
@@ -34,20 +34,20 @@
           <%= User.human_attribute_name 'gender' %>
         </div>
         <div class='<%= dynamic_large_column_class %>'>
-          <label class='radio-inline c-input c-radio'>
-            <%= f.radio_button :gender, :male %>
-            <span class='c-indicator'></span>
-          	<%= User.human_attribute_name 'gender.male' %>
+          <label class='custom-control custom-radio'>
+            <%= f.radio_button :gender, :male, class: 'custom-control-input' %>
+            <span class='custom-control-indicator'></span>
+          	<span class='custom-control-description'><%= User.human_attribute_name 'gender.male' %></span>
           </label>
-          <label class='radio-inline c-input c-radio'>
-            <%= f.radio_button :gender, :female %>
-            <span class='c-indicator'></span>
-          	<%= User.human_attribute_name 'gender.female' %>
+          <label class='custom-control custom-radio'>
+            <%= f.radio_button :gender, :female, class: 'custom-control-input' %>
+            <span class='custom-control-indicator'></span>
+          	<span class='custom-control-description'><%= User.human_attribute_name 'gender.female' %></span>
           </label>
-          <label class='radio-inline c-input c-radio'>
-            <%= f.radio_button :gender, :other %>
-            <span class='c-indicator'></span>
-          	<%= User.human_attribute_name 'gender.other' %>
+          <label class='custom-control custom-radio'>
+            <%= f.radio_button :gender, :other, class: 'custom-control-input' %>
+            <span class='custom-control-indicator'></span>
+          	<span class='custom-control-description'><%= User.human_attribute_name 'gender.other' %></span>
           </label>
         </div>
       </div>

@@ -69,48 +69,47 @@
 
 // Sidebar header
 .sidebar-nav .nav-header {
-  padding-left: $sidebar-item-padding-x;
-  padding-right: $sidebar-item-padding-x;
+  padding-left: $sidebar-link-padding-x;
+  padding-right: $sidebar-link-padding-x;
   display: block;
   margin-top: $sidebar-nav-header-margin-top;
   color: $text-muted;
 }
 
-// Sidebar submenu
+// Sidebar item
 .sidebar-nav {
-  @for $i from 1 through $sidebar-nav-submenu-level-max {
-    .nav-submenu-item-#{$i} a {
-      padding-left: $sidebar-item-padding-x + ($sidebar-nav-submenu-padding-left * ($i - 1));
+  .nav-item {
+    
+  
+    //Submenu items
+    .nav-item {
+      //background: darken($gray-lightest, 3%);
     }
-    .nav-item-#{$i} a {
-      padding-left: $sidebar-item-padding-x + ($sidebar-nav-submenu-padding-left * $i);
+  
+    .nav-link {
+      padding: $sidebar-link-padding-y $sidebar-link-padding-x;
+      display: block;
+      text-decoration: none;
+      color: #000;
+    
+      &:hover {
+        background: darken($gray-lightest, 5%);
+      }
     }
   }
 }
 
-// Sidebar item
+// Sidebar submenu
 .sidebar-nav {
-  .nav-item, .nav-item-1, .nav-item-2, .nav-item-3, .nav-item-4, .nav-item-5 {
-    // text-indent: 20px;
-    line-height: 40px;
-  
-    a {
-      padding-left: $sidebar-item-padding-x;
-      padding-right: $sidebar-item-padding-x;
-      display: block;
-      text-decoration: none;
-      color: #000;
+  $submenu-link-class: '';
+  @for $i from 1 through $sidebar-nav-submenu-level-max {
+    $submenu-link-class: "#{$submenu-link-class}.nav-submenu > ul > .nav-item ";
+    #{$submenu-link-class} > .nav-link {
+      padding-left: $sidebar-submenu-link-padding-left-default + ($sidebar-submenu-link-padding-left * ($i - 1));
+      padding-top: $sidebar-submenu-link-padding-y;
+      padding-bottom: $sidebar-submenu-link-padding-y;
     }
-  
-    a:hover {
-      text-decoration: none;
-      background: darken($gray-lightest, 5%);
-    }
-  
-    a:active,
-    a:focus {
-      text-decoration: none;
-    }
+    $submenu-link-class: "#{$submenu-link-class} > ";
   }
 }
 
@@ -120,8 +119,8 @@
   font-size: 18px;
   line-height: 60px;
   
-  a,
-  a:hover, {
+  a.nav-link,
+  a.nav-link:hover, {
     color: $text-muted;
     background: none;
   }

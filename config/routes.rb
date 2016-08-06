@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     root                     'main_pages#home'
     get     '/signup',   to: 'signup_users#new'
     get     '/login',    to: 'sessions#new'
-    delete  '/logout',   to: 'sessions#destroy'
+    get     '/logout',   to: 'sessions#destroy'
 
-    resources :signup_users,  only: [:new, :create]
+    # resources :signup_users,  only: [:new, :create]
     resources :sessions,      only: [:new, :create, :destroy]
     resources :companies
     resources :users

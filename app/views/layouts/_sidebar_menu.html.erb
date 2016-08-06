@@ -1,38 +1,93 @@
 <div id='sidebar-wrapper'>
   <ul class='sidebar-nav'>
     <li class='nav-item nav-brand'>
-      <%= link_to app_name, root_path %>
+      <%= link_to app_name, root_path, class: 'nav-link' %>
     </li>
     <li class='nav-item'>
-      <%= link_to icon('briefcase', t('.companies'), class: 'fa-fw'), companies_path %>
+      <%= link_to icon('briefcase', t('.companies'), class: 'fa-fw'), companies_path, class: 'nav-link' %>
     </li>
     <li class='nav-item'>
-      <%= link_to icon('users', t('.teams'), class: 'fa-fw'), teams_path %>
+      <%= link_to icon('users', t('.teams'), class: 'fa-fw'), teams_path, class: 'nav-link' %>
     </li>
     <li class='nav-item'>
-      <%= link_to icon('user', t('.users'), class: 'fa-fw'), users_path %>
-    </li class='nav-item'>
+      <%= link_to icon('user', t('.users'), class: 'fa-fw'), users_path, class: 'nav-link' %>
+    </li>
     <div class='nav-header'>
       Settings
     </div>
     
-    <li class='nav-submenu-item-1'>
+    <li class='nav-item'>
       <%= link_to icon('language', current_locale_name, class: 'fa-fw'), 
-        '#submenu-1', 
+        '#submenu-1',
+        class: 'nav-link dropdown-toggle', 
         'data-toggle': 'collapse',
         'data-parent': '#submenu-1',
         'aria-expanded': 'false',
         'aria-controls': 'submenu-1' %>
     </li>
-    <div id='submenu-1' class='nav-submenu collapse' aria-labelledby='submenu-1'>
-      <ul>
-        <% locale_list.each do |local_key, locale_name| %>
-          <li class='nav-item-1'>
-            <%= link_to locale_name, { locale: local_key } %>
+    <li class='nav-item'>
+      <div id='submenu-1' class='nav-submenu collapse' aria-labelledby='submenu-1'>
+        <ul>
+          <li class='nav-item'>
+            <%= link_to 'One subitem', '#', class: 'nav-link' %>
           </li>
-        <% end %>
-      </ul>
-    </div>
+          <li class='nav-item'>
+            <%= link_to 'Two subitem', '#', class: 'nav-link' %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to 'Other subitem', '#', class: 'nav-link' %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to current_locale_name, 
+              '#submenu-2',
+              class: 'nav-link dropdown-toggle', 
+              'data-toggle': 'collapse',
+              'data-parent': '#submenu-2',
+              'aria-expanded': 'false',
+              'aria-controls': 'submenu-2' %>
+          </li>
+          <li class='nav-item'>
+            <div id='submenu-2' class='nav-submenu collapse' aria-labelledby='submenu-2'>
+              <ul>
+                <li class='nav-item'>
+                  <%= link_to 'One subitem', '#', class: 'nav-link' %>
+                </li>
+                <li class='nav-item'>
+                  <%= link_to 'Two subitem', '#', class: 'nav-link' %>
+                </li>
+                <li class='nav-item'>
+                  <%= link_to 'Other subitem', '#', class: 'nav-link' %>
+                </li>
+                <li class='nav-item'>
+                  <%= link_to current_locale_name, 
+                    '#submenu-3',
+                    class: 'nav-link dropdown-toggle', 
+                    'data-toggle': 'collapse',
+                    'data-parent': '#submenu-2',
+                    'aria-expanded': 'false',
+                    'aria-controls': 'submenu-2' %>
+                </li>
+                <li class='nav-item'>
+                  <div id='submenu-3' class='nav-submenu collapse' aria-labelledby='submenu-2'>
+                    <ul>
+                      <li class='nav-item'>
+                        <%= link_to 'One subitem', '#', class: 'nav-link' %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to 'Two subitem', '#', class: 'nav-link' %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to 'Other subitem', '#', class: 'nav-link' %>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
   </ul>
 </div>
 

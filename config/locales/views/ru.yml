@@ -69,6 +69,7 @@ ru:
       companies: "Компании"
       teams: "Команды"
     user_menu:
+      my_profile: "Мой профиль"
       logout: "Выйти"
   users:
     user_avatar:

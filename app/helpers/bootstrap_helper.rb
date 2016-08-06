@@ -14,7 +14,7 @@ module BootstrapHelper
   end
   
   def column_offset_class(col = nil, prefix = nil)
-    "col-#{grid(prefix)}-offset-#{column(col)}"
+    "offset-#{grid(prefix)}-#{column(col)}"
   end
   
   def small_column_class
@@ -39,6 +39,29 @@ module BootstrapHelper
   
   def dynamic_large_column_class
     "#{column_class(8, 'ld')} #{column_class(9)}"
+  end
+  
+  # Ancestry
+  def sidebar_item_tag(title, link, icon = nil, link_options = {})
+    title = icon(icon, title, class: 'fa-fw') unless icon
+    content_tag(:li, class: 'nav-item') do
+      link_to title, link, class: 'nav-link'
+    end
+  end
+  
+  def sidebar_submenu_title_tag(title, link, html_id, icon = nil)
+    link_options['data-toggle']   = 'collapse'
+    link_options['data-parent']   = "##{html_id}"
+    link_options['aria-expanded'] = 'false'
+    link_options['aria-controls'] = "#{html_id}"
+    
+    sidebar_item_tag(title, link, icon, link_options)
+  end
+  
+  def sidebar_submenu_item_tag(html_id, &block)
+    content_tag(:li, class: 'nav-item') do
+      content_tag(:li, yield, id: "#{html_id}", class: 'nav-submenu collapse', 'arial-labelledby': "#{html_id}")
+    end
   end
   
   # ==== Examples

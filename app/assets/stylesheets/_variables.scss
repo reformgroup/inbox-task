@@ -20,11 +20,13 @@ $card-border-radius:       0;
 $card-border-radius-inner: 0 !default;
 
 // Sidebar
-
 $sidebar-content-padding-y: 1rem !default;
 $sidebar-width: 300px;
-$sidebar-item-padding-x: 1rem !default;
-$sidebar-nav-submenu-padding-left: .5rem !default;
+$sidebar-link-padding-x: 1rem !default;
+$sidebar-link-padding-y: .625rem !default;
+$sidebar-submenu-link-padding-y: .4rem !default;
+$sidebar-submenu-link-padding-left-default: $sidebar-link-padding-x + 1.5rem;
+$sidebar-submenu-link-padding-left: 1rem !default;
 $sidebar-nav-header-margin-top: 1rem !default;
 $sidebar-nav-submenu-level-max: 5;
 $zindex-sidebar-wrapper:  1000 !default;

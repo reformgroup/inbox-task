@@ -1,10 +1,10 @@
 <li class='nav-item nav-user dropdown'>
-	<a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+	<a class='nav-link' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
     <%= image_tag current_user.avatar.url(:thumb), class: 'img-circle avatar avatar-thumb' %>
-    <span><%= current_user.name %></span>
   </a>
-	<div class='dropdown-menu' aria-labelledby='user-menu'>
+	<div class='dropdown-menu dropdown-menu-right' aria-labelledby='user-menu'>
+    <%= link_to icon('user', t('.my_profile'), class: 'fa-fw text-muted'), '#', class: 'dropdown-item' %>
 		<div class='dropdown-divider'></div>
-		<%= link_to icon('sign-out', t('.logout'), class: 'fa-fw text-muted'), logout_path, method: 'delete', class: 'dropdown-item' %>
+		<%= link_to icon('sign-out', t('.logout'), class: 'fa-fw text-muted'), logout_path, method: :destroy, class: 'dropdown-item' %>
 	</div>
 </li>

@@ -59,7 +59,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ancestry', '~> 2.1'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '~> 4.0.0.alpha3.1'
 gem 'font-awesome-sass', '~> 4.6', '>= 4.6.2'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'validates_timeliness', '~> 4.0', '>= 4.0.2'
