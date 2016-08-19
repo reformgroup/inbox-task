@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
-    @team = Team.new
+    @team = Team.new(parent_id: params[:parent_id])
   end
 
   # GET /teams/1/edit

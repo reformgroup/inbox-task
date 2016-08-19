@@ -13,6 +13,12 @@ ru:
         many: Компаний
         one: Компания
         other: Компании
+      team:
+        name: Команды
+        few: Команды
+        many: Команд
+        one: Команда
+        other: Команды
     attributes:
       user:
         first_name: "Имя"
@@ -35,3 +41,5 @@ ru:
         user: "Пользователь"
       company:
         name: "Название компании"
+      team:
+        name: "Название команды"

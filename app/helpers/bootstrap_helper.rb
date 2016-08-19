@@ -42,6 +42,7 @@ module BootstrapHelper
   end
   
   # Ancestry
+  # === Sidebar
   def sidebar_item_tag(title, link, icon = nil, link_options = {})
     title = icon(icon, title, class: 'fa-fw') unless icon
     content_tag(:li, class: 'nav-item') do

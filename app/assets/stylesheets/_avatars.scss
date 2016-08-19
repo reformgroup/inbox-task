@@ -6,20 +6,32 @@ img.avatar, div.avatar {
 }
 
 img.avatar.avatar-original, div.avatar.avatar-original {
-	width: 7.625rem; // 120px + 1px border * 2
-	height: 7.625rem; // 120px + 1px border * 2
+	width: $avatar-original-size;
+	height: $avatar-original-size;
 }
 
 img.avatar.avatar-medium, div.avatar.avatar-medium {
-	width: 3.25rem; // 50px + 1px border * 2
-	height: 3.25rem; // 50px + 1px border * 2
+	width: $avatar-medium-size;
+	height: $avatar-medium-size;
 }
 
 img.avatar.avatar-thumb, div.avatar.avatar-thumb {
-	width: 2.375rem; // 38px + 1px border * 2
-	height: 2.375rem; // 38px + 1px border * 2
+	width: $avatar-thumb-size;
+	height: $avatar-thumb-size;
+}
+
+div.avatar.avatar-medium-missing {
+  border-radius: $avatar-medium-size/2;
+  border: 2px dashed $gray-lighter;
+	width: $avatar-medium-size;
+	height: $avatar-medium-size;
+}
+
+div.avatar.avatar-group {
+  left: 1.5rem - $avatar-medium-size;
+  display: inline;
 }
 
 .table td.avatar {
-	width: 3.125rem; // 50px
+	width: $avatar-size; 
 }

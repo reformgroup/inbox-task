@@ -1,13 +1,20 @@
 // Variables
 
-//Block
+// Avatar
+$avatar-original-size:  7.625rem !default; // 120px + 1px border * 2
+$avatar-medium-size:    3.25rem !default; // 50px + 1px border * 2
+$avatar-thumb-size:     2.375rem !default; // 38px + 1px border * 2
+$avatar-size:           3.125rem !default; // 50px
+
+// Block
 $blok-header-margin-top:      0rem !default;
 $blok-header-margin-bottom:   3rem !default;
 $blok-content-margin-top:     1.25rem !default;
 $blok-content-margin-bottom:  1.25rem !default;
 
-// Navbar
-$navbar-main-border-color: $hr-border-color;
+// Cards
+$card-border-radius:       0;
+$card-border-radius-inner: 0 !default;
 
 // Footer
 $footer-dark-color:                 rgba(255,255,255,.5) !default;
@@ -15,21 +22,23 @@ $footer-dark-hover-color:           rgba(255,255,255,.75) !default;
 $footer-dark-active-color:          rgba(255,255,255,1) !default;
 $footer-dark-disabled-color:        rgba(255,255,255,.25) !default;
 
-// Cards
-$card-border-radius:       0;
-$card-border-radius-inner: 0 !default;
+// Navbar
+$navbar-main-border-color: $hr-border-color;
+
+// Media
+$media-text-middle-padding-top: $avatar-medium-size/2 - .75rem; // Avatar height/2 - base line-height
 
 // Sidebar
-$sidebar-content-padding-y: 1rem !default;
-$sidebar-width: 300px;
-$sidebar-link-padding-x: 1rem !default;
-$sidebar-link-padding-y: .625rem !default;
-$sidebar-submenu-link-padding-y: .4rem !default;
+$sidebar-content-padding-y:                 1rem !default;
+$sidebar-width:                             18.75rem !default; // 300px
+$sidebar-link-padding-x:                    1rem !default;
+$sidebar-link-padding-y:                    .625rem !default;
+$sidebar-submenu-link-padding-y:            .4rem !default;
 $sidebar-submenu-link-padding-left-default: $sidebar-link-padding-x + 1.5rem;
-$sidebar-submenu-link-padding-left: 1rem !default;
-$sidebar-nav-header-margin-top: 1rem !default;
-$sidebar-nav-submenu-level-max: 5;
-$zindex-sidebar-wrapper:  1000 !default;
+$sidebar-submenu-link-padding-left:         1rem !default;
+$sidebar-nav-header-margin-top:             1rem !default;
+$sidebar-nav-submenu-level-max:             5;
+$zindex-sidebar-wrapper:                    1000 !default;
 
 //
 //== Colors
@@ -46,21 +55,21 @@ $brand-danger:  #DA4453 !default;
 //== Form states and alerts
 //
 //## Define colors for form feedback states and, by default, alerts.
-$state-success-text:             #3c763d !default;
-$state-success-bg:               #b9df90 !default;
-$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+$state-success-text:    #3c763d !default;
+$state-success-bg:      #b9df90 !default;
+$state-success-border:  darken(adjust-hue($state-success-bg, -10), 5%) !default;
 
-$state-info-text:                #31708f !default;
-$state-info-bg:                  #7cd1ef !default;
-$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+$state-info-text:       #31708f !default;
+$state-info-bg:         #7cd1ef !default;
+$state-info-border:     darken(adjust-hue($state-info-bg, -10), 7%) !default;
 
-$state-warning-text:             #8a6d3b !default;
-$state-warning-bg:               #8a6d3b !default;
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+$state-warning-text:    #8a6d3b !default;
+$state-warning-bg:      #8a6d3b !default;
+$state-warning-border:  darken(adjust-hue($state-warning-bg, -10), 5%) !default;
 
-$state-danger-text:              #a94442 !default;
-$state-danger-bg:                #f2838f !default;
-$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+$state-danger-text:     #a94442 !default;
+$state-danger-bg:       #f2838f !default;
+$state-danger-border:   darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 
 //== Forms
 $input-border-focus: $brand-primary;

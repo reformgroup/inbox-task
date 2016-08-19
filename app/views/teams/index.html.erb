@@ -1,36 +1,34 @@
 <% provide :title, t('.title') %>
 
-<h6 class='text-muted'><%= t 'activerecord.models.user.name' %></h6>
+<h6 class='text-muted'><%= t 'activerecord.models.team.name' %></h6>
 <h2><%= t '.title' %></h2>
 
 <hr class='m-b-3'>
 <div class='row m-b-3'>
   <div class='col-<%= grid %>-6'>
-    <%= search_tag users_path, id: 'users-search' %>
+    <%= search_tag teams_path, id: 'team-search' %>
   </div><!-- /.col -->
   <div class='col-<%= grid %>-6'>
     <div class='pull-right'>
-      <%= link_to t('.add_user_link'), new_user_path, class: 'btn btn-secondary' %>
+      <%= link_to t('.add_team_link'), new_team_path, class: 'btn btn-secondary' %>
     </div>
   </div><!-- /.col -->
 </div><!-- /.row -->
 <div class='row m-b-2'>
   <div class='<%= column_class %>'>
     <%= link_sort_tag(:sort, main_class: 'default-link-style', selected_in_title: true) do %>
-      <%= option_for_sort(:last_name, t('.sort_by_name'), default: true) %>
+      <%= option_for_sort(:name, t('.sort_by_name'), default: true) %>
       <%= option_for_sort(:created_at, t('.sort_by_created_at')) %>
     <% end %>
   </div><!-- /.col -->
 </div><!-- /.row -->
-<% @users.each do |user| %>
-  <%= render 'item', item: user %>
-<% end %>
+<%= nested_teams(@teams.arrange(order: :created_at)) %>
 <div class='row m-t-2'>
   <div class='<%= column_class %>'>
     <div class='pagination-block'>
-      <%= will_paginate @users, inner_window: 2, outer_window: 1 %>
+      <%= will_paginate @teams, inner_window: 2, outer_window: 1 %>
       <div class='pagination-info text-muted'>
-        <small><%= page_entries_info @users, model: User, html: false %></small>
+        <small><%= page_entries_info @teams, model: Team, html: false %></small>
       </div><!-- /.pagination-info -->
     </div><!-- /.pagination-block -->
   </div><!-- /.col -->

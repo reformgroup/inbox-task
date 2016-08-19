@@ -1,0 +1,25 @@
+.media, .sub-media {
+  // Proper spacing between instances of .media
+  margin-top: 0;
+  padding: $media-margin-top 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.media-border {
+  border-bottom: 1px solid $table-border-color;
+}
+
+.media.media-border:first-child {
+  border-top: 1px solid $table-border-color;
+}
+
+.media.media-text-middle .media-body {
+  padding-top: $media-text-middle-padding-top;
+}
+
+.sub-media {
+  margin-left: 50px;
+}

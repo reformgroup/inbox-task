@@ -15,8 +15,12 @@
 #
 
 class Team < ApplicationRecord
+  include Searchable
+  include Filterable
+  include Sortable
+  include Userstampable::Stampable
   
-  VALID_NAME_REGEX  = /[:alpha:\d -_]+)/i
+  VALID_NAME_REGEX  = /[:alpha:\d -_]+/i
   
   has_ancestry
   
