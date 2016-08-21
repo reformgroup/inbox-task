@@ -1,0 +1,27 @@
+<% provide :title, @team.name %>
+
+<h6 class='text-muted'><%= t 'activerecord.models.team.name' %></h6>
+<h2><%= t '.title' %></h2>
+
+<hr class='m-b-3'>
+<div class='row m-b-3'>
+  <div class='<%= column_class %> m-b-1'>
+    <h4><%= @team.name %></h4>
+  </div><!-- /.col -->
+  <% if @team.parent %>
+    <div class='<%= dynamic_small_column_class %>'>
+      <span class='text-muted'><%= Team.human_attribute_name 'parent' %>
+    </div><!-- /.col -->
+    <div class='<%= dynamic_large_column_class %>'>
+      <%= @team.parent.name %>
+    </div><!-- /.col -->
+  <% end %>
+</div><!-- /.row -->
+<hr class='m-y-3'>
+<div class='block-content row'>
+  <div class='<%= column_class %>'>
+    <div class='pull-right'>
+      <%= link_to t('buttons.edit'), edit_team_path(@team), { class: 'btn btn-primary', role: 'button' } %>
+    </div>
+  </div><!-- /.col -->
+</div><!-- /.block-content.row -->

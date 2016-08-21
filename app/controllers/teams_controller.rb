@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team_collection, only: [:new, :edit]
   before_action :logged_in_user
   
   layout 'sidebar'
@@ -58,11 +60,16 @@ class TeamsController < ApplicationController
     def set_team
       @team = Team.find(params[:id])
     end
+    
+    def set_team_collection
+      @team_collection = Team.order(:name).map { |c| ["-" * c.depth + c.name,c.id] }
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(
-        :name
+        :name,
+        :parent_id
       )
     end
 end

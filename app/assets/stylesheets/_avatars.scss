@@ -21,15 +21,25 @@ img.avatar.avatar-thumb, div.avatar.avatar-thumb {
 }
 
 div.avatar.avatar-medium-missing {
+  position: relative;
+  float: left;
   border-radius: $avatar-medium-size/2;
   border: 2px dashed $gray-lighter;
 	width: $avatar-medium-size;
 	height: $avatar-medium-size;
-}
-
-div.avatar.avatar-group {
-  left: 1.5rem - $avatar-medium-size;
-  display: inline;
+  margin-left: - 2.5rem;
+  background-color: #fff;
+  
+  &:nth-child(1) {
+    margin-left: 0;
+    z-index: 3;
+  }
+  &:nth-child(2) {
+    z-index: 2;
+  }
+  &:nth-child(3) {
+    z-index: 1;
+  }
 }
 
 .table td.avatar {

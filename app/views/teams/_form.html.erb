@@ -1,0 +1,42 @@
+<%= form_for(@team) do |f| %>
+  <div class='row'>
+    <div class='<%= column_class %>'>
+      <div class='form-group row'>
+        <%= f.label :name, class: "#{dynamic_small_column_class} form-control-label" %>
+        <div class='<%= dynamic_large_column_class %>'>
+          <%= f.text_field :name, class: 'form-control' %>
+          <%= error_messages f.object, :name %>
+        </div>
+      </div>
+
+      <div class='form-group row'>
+        <%= f.label :parent, class: "#{dynamic_small_column_class} form-control-label" %>
+        <div class='<%= dynamic_large_column_class %>'>
+          
+          <%= f.select(:parent_id, @team_collection, { include_blank: true }, class: 'form-control custom-select') %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='<%= "#{dynamic_small_column_offset_class} #{dynamic_large_column_class}" %>'>
+          <% if action_name == 'edit' %>
+            <%= link_to t('.confirm.delete.button'), '#', class: 'text-danger', 'data-toggle': 'modal', 'data-target': '#modal' %>
+            <%= render partial: 'layouts/modal', locals: {  
+                  title: t('.confirm.delete.title'),
+                  body: t('.confirm.delete.body'),
+                  ok_link: link_to(t('buttons.delete'), team_path(@team), method: :delete, class: 'btn btn-danger'),
+                  cancel_link_text: t('buttons.cancel') } %>
+          <% end %>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <hr class='m-y-3'>
+  <div class='row'>
+    <div class='<%= column_class %>'>
+      <div class='pull-right'>
+        <%= cancel_link %>
+        <%= save_link %>
+      </div>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+<% end %>
