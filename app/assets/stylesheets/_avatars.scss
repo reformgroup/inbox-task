@@ -1,44 +1,53 @@
 // Avatar images
-img.avatar, div.avatar {
+.avatar {
+  @extend .img-circle;
 	background-size: cover;
 	background-position: center;
+}
+
+.avatar.avatar-img {
 	border: 1px solid $gray-lighter;
 }
 
-img.avatar.avatar-original, div.avatar.avatar-original {
+.avatar.avatar-missing {
+	border: 1px dashed $avatar-border-color;
+  background-color: $avatar-missing-bg;
+//  &:before {
+//    content: &#x2715;
+//  }
+}
+
+.avatar.avatar-original {
 	width: $avatar-original-size;
 	height: $avatar-original-size;
 }
 
-img.avatar.avatar-medium, div.avatar.avatar-medium {
+.avatar.avatar-medium {
 	width: $avatar-medium-size;
 	height: $avatar-medium-size;
 }
 
-img.avatar.avatar-thumb, div.avatar.avatar-thumb {
+.avatar.avatar-thumb {
 	width: $avatar-thumb-size;
 	height: $avatar-thumb-size;
 }
 
-div.avatar.avatar-medium-missing {
-  position: relative;
-  float: left;
-  border-radius: $avatar-medium-size/2;
-  border: 2px dashed $gray-lighter;
-	width: $avatar-medium-size;
-	height: $avatar-medium-size;
-  margin-left: - 2.5rem;
-  background-color: #fff;
-  
-  &:nth-child(1) {
-    margin-left: 0;
-    z-index: 3;
-  }
-  &:nth-child(2) {
-    z-index: 2;
-  }
-  &:nth-child(3) {
-    z-index: 1;
+.avatar.avatar-group {
+  width: $avatar-medium-size*1.6;
+  .avatar {
+    position: relative;
+    float: left;
+    margin-left: $avatar-group-margin-left;
+    &:nth-child(1) {
+      margin-left: 0;
+      z-index: 3;
+    }
+    &:nth-child(2) {
+      z-index: 2;
+    }
+    &:nth-child(3) {
+      z-index: 1;
+    }
   }
 }
 

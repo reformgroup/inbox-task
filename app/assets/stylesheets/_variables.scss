@@ -1,13 +1,16 @@
 // Variables
 
 // Avatar
-$avatar-original-size:  7.625rem !default; // 120px + 1px border * 2
-$avatar-medium-size:    3.25rem !default; // 50px + 1px border * 2
-$avatar-thumb-size:     2.375rem !default; // 38px + 1px border * 2
-$avatar-size:           3.125rem !default; // 50px
+$avatar-original-size:      7.625rem !default; // 120px + 1px border * 2
+$avatar-medium-size:        3.25rem !default; // 50px + 1px border * 2
+$avatar-thumb-size:         2.375rem !default; // 38px + 1px border * 2
+$avatar-size:               3.125rem !default; // 50px
+$avatar-border-color:       darken($gray-lighter, 15%);
+$avatar-group-margin-left:  -2.5rem !default;
+$avatar-missing-bg:         #fff !default;
 
 // Block
-$blok-header-margin-top:      0rem !default;
+$blok-header-margin-top:      0;
 $blok-header-margin-bottom:   3rem !default;
 $blok-content-margin-top:     1.25rem !default;
 $blok-content-margin-bottom:  1.25rem !default;
@@ -27,6 +30,7 @@ $navbar-main-border-color: $hr-border-color;
 
 // Media
 $media-text-middle-padding-top: $avatar-medium-size/2 - .75rem; // Avatar height/2 - base line-height
+$media-hr-margin-y: .5rem;
 
 // Sidebar
 $sidebar-content-padding-y:                 1rem !default;

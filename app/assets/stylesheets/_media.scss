@@ -1,19 +1,6 @@
 .media, .sub-media {
   // Proper spacing between instances of .media
   margin-top: 0;
-  padding: $media-margin-top 0;
-
-  &:first-child {
-    padding-top: 0;
-  }
-}
-
-.media-border {
-  border-bottom: 1px solid $table-border-color;
-}
-
-.media.media-border:first-child {
-  border-top: 1px solid $table-border-color;
 }
 
 .media.media-text-middle .media-body {
@@ -21,5 +8,10 @@
 }
 
 .sub-media {
-  margin-left: 50px;
+  margin-left: 25px;
+}
+
+hr.media-hr {
+  margin-top: $media-hr-margin-y;
+  margin-bottom: $media-hr-margin-y;
 }

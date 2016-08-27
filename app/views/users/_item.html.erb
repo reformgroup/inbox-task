@@ -1,11 +1,12 @@
-<div class="media media-border media-text-middle">
+<div class="media media-text-middle">
   <div class="media-left">
     <%= link_to user_path(item) do %>
-      <%= image_tag item.avatar.url(:medium), class: 'img-circle avatar avatar-medium' %>
+      <%= image_tag item.avatar.url(:medium), class: 'avatar avatar-medium' %>
     <% end %>
   </div>
   <div class="media-body">
     <%= link_to item.name, user_path(item) %>
     <%= time_ago_tag item.created_at, class: 'pull-right' %>
   </div>
+  <hr class="media-hr">
 </div>

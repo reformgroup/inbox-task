@@ -77,4 +77,14 @@ module ApplicationHelper
     end
     content_tag(:li, options) { link_to(link_text.html_safe, link_path, class: 'nav-link') }
   end
+  
+  # Ancestry
+  def ancestry_parent_breadcrumbs(object, method)
+    if object.parent
+      parent_tag      = link_to(object.parent.public_send(method), object.parent)
+      grandparent_tag = ancestry_parent_breadcrumbs(object.parent, method)
+      parent_tag      = grandparent_tag << " / " << parent_tag if grandparent_tag
+      parent_tag
+    end
+  end
 end

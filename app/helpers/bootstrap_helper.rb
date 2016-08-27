@@ -65,6 +65,30 @@ module BootstrapHelper
     end
   end
   
+  # Caret
+  def caret_link(url_or_options = nil, options = {})
+    options, url_or_options = url_or_options, nil if url_or_options.is_a?(Hash)
+    
+    url_or_options            ||= '#'
+    icon_name                 = options.delete(:icon) || 'angle-down'
+    icon_html_options         = {}
+    icon_html_options[:class] = options.delete(:icon_class)
+    
+    link_to icon(icon_name, icon_html_options), url_or_options, options
+  end
+  
+  # Collapse
+  def collapse_caret_link(url_or_options = nil, options = {})
+    options, url_or_options = url_or_options, nil if url_or_options.is_a?(Hash)
+    
+    url_or_options            ||= "##{options[:collapse_id]}"
+    options['data-toggle']    ||= "collapse"
+    options['aria-controls']  = options[:collapse_id]
+    options['aria-expanded']  = options.delete(:collapse_show) || true
+    
+    caret_link(url_or_options, options)
+  end
+  
   # ==== Examples
   #   search_tag(users_path, id: "users-search")
   #   # => <form id="users-search" role="search" action="/users" accept-charset="UTF-8" method="get">

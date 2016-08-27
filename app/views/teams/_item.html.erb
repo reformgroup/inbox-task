@@ -1,19 +1,25 @@
 <div class="media">
   <div class="media-left">
-    <div class="avatar avatar-medium-missing"></div>
-    <div class="avatar avatar-medium-missing"></div>
-    <div class="avatar avatar-medium-missing"></div>
+    <div class="avatar avatar-group">
+      <div class="avatar avatar-medium avatar-missing"></div>
+      <div class="avatar avatar-medium avatar-missing"></div>
+      <div class="avatar avatar-medium avatar-missing"></div>
+    </div>
   </div>
   <div class="media-body">
-    <div>
-    <div class="avatar avatar-medium-missing"></div>
-    <div class="avatar avatar-medium-missing"></div>
-    <div class="avatar avatar-medium-missing"></div></div>
     <%= link_to item.name, team_path(item) %>
-    <%= time_ago_tag item.created_at, class: 'pull-right' %><br>
+    <div class="pull-right">
+      <%= time_ago_tag item.created_at, class: 'm-r-1' %>
+      <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+    </div>
+    <br>
     <small class="text-muted">No Members</small>
+    <% if item.children? %>
+      <div class="pull-right">
+        <%= collapse_caret_link(options + { icon_class: 'fa-lg' }) %>
+        <%= link_to icon('angle-down', class: 'fa-lg'), "##{options[:id]}", 'data-toggle': "collapse", 'aria-expanded': 'true', 'aria-controls': options[:id] %>
+      </div>
+    <% end %>
   </div>
-  <div class="sub-media">
-    <%= sub_items %>
-  </div>
+  <hr class="media-hr">
 </div>

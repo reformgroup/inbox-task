@@ -9,11 +9,8 @@
       <%= nav_link_to t('.company'), root_path %>
     </ul>
 		<ul class='nav navbar-nav pull-right'>
-      
       <%= render 'layouts/language_menu' %>
-	    
 			<% if logged_in? %>
-        
 				<%= render 'layouts/user_menu' %>
 			<% else %>
         <li class='nav-item'><%= link_to t('.login'), login_path, class: 'nav-link' %></li>

@@ -13,7 +13,7 @@
       <span class='text-muted'><%= Team.human_attribute_name 'parent' %>
     </div><!-- /.col -->
     <div class='<%= dynamic_large_column_class %>'>
-      <%= @team.parent.name %>
+      <%= ancestry_parent_breadcrumbs(@team, :name) %>
     </div><!-- /.col -->
   <% end %>
 </div><!-- /.row -->

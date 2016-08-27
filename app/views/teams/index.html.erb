@@ -22,7 +22,12 @@
     <% end %>
   </div><!-- /.col -->
 </div><!-- /.row -->
-<%= nested_teams(@teams.arrange(order: :created_at)) %>
+
+<%= arranged_tree(@teams.arrange(order: :created_at), collapse: true) do |item, options| %>
+  <%= render 'item', item: item, options: options %>
+<% end %>
+
+ <!-- nested_teams(@teams.arrange(order: :created_at))  -->
 <div class='row m-t-2'>
   <div class='<%= column_class %>'>
     <div class='pagination-block'>
