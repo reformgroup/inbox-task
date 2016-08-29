@@ -66,13 +66,17 @@ module BootstrapHelper
   end
   
   # Caret
+  def caret_icon(text)
+    icon('angle-down', 'fa-lg fa-fw')
+  end
+  
   def caret_link(url_or_options = nil, options = {})
     options, url_or_options = url_or_options, nil if url_or_options.is_a?(Hash)
     
     url_or_options            ||= '#'
     icon_name                 = options.delete(:icon) || 'angle-down'
     icon_html_options         = {}
-    icon_html_options[:class] = options.delete(:icon_class)
+    icon_html_options[:class] = options.delete(:collapse_caret_class)
     
     link_to icon(icon_name, icon_html_options), url_or_options, options
   end
@@ -213,20 +217,21 @@ module BootstrapHelper
     main_class    = tag_name == :button ? 'btn-group' : 'dropdown'
     main_class    = [main_class, options.delete(:main_class)].compact.join(' ')
     current_title = @selected || t('sort.not_selected') if options.delete(:selected_in_title)
+    current_title = current_title + caret_tag
     
     options['id']            ||= "dropdown_#{name}"
     options['data-toggle']   ||= 'dropdown'
     options['aria-haspopup'] ||= 'true'
     options['aria-expanded'] ||= 'false'
     options[:btn_style]      ||= 'secondary' if tag_name == :button
-    options[:class] = ["btn dropdown-toggle btn-#{options.delete(:btn_style)}", options[:class]].compact.join(' ')
+    options[:class] = ["btn btn-#{options.delete(:btn_style)}", options[:class]].compact.join(' ')
     
     content = content_tag(:div, class: 'dropdown-menu') { content_or_options }
     content_tag(:div, class: main_class) do
       if tag_name == :button
-        button_tag(current_title, options).concat(content)
+        button_tag(current_title.html_safe, options).concat(content)
       else
-        link_to(current_title, 'javascript:;', options).concat(content)
+        link_to(current_title.html_safe, 'javascript:;', options).concat(content)
       end
     end
   end

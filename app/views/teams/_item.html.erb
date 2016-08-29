@@ -16,8 +16,7 @@
     <small class="text-muted">No Members</small>
     <% if item.children? %>
       <div class="pull-right">
-        <%= collapse_caret_link(options + { icon_class: 'fa-lg' }) %>
-        <%= link_to icon('angle-down', class: 'fa-lg'), "##{options[:id]}", 'data-toggle': "collapse", 'aria-expanded': 'true', 'aria-controls': options[:id] %>
+        <%= collapse_caret_link(options) %>
       </div>
     <% end %>
   </div>
