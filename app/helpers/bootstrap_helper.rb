@@ -66,29 +66,36 @@ module BootstrapHelper
   end
   
   # Caret
-  def caret_icon(text)
-    icon('angle-down', 'fa-lg fa-fw')
+  # TODO: Add caret spacer for items without icon
+  def caret_icon(content_or_options = nil, options = {})
+    options, content_or_options = content_or_options, nil if content_or_options.is_a?(Hash)
+    options[:class] ||= 'fa-lg'
+    content_or_options = if content_or_options
+      "#{content_or_options} #{icon('angle-down', options)}"
+    else
+      icon('angle-down', options)
+    end
+    content_or_options.html_safe
   end
   
+  # TODO: Delete trash classes from link
   def caret_link(url_or_options = nil, options = {})
     options, url_or_options = url_or_options, nil if url_or_options.is_a?(Hash)
+    url_or_options  ||= '#'
+    caret_class     = options[:caret_class]
     
-    url_or_options            ||= '#'
-    icon_name                 = options.delete(:icon) || 'angle-down'
-    icon_html_options         = {}
-    icon_html_options[:class] = options.delete(:collapse_caret_class)
-    
-    link_to icon(icon_name, icon_html_options), url_or_options, options
+    link_to caret_icon(class: caret_class), url_or_options, options
   end
   
   # Collapse
+  # TODO: Need to add class when options[:collapse_hidden] is true 'collapsed'
   def collapse_caret_link(url_or_options = nil, options = {})
     options, url_or_options = url_or_options, nil if url_or_options.is_a?(Hash)
     
     url_or_options            ||= "##{options[:collapse_id]}"
     options['data-toggle']    ||= "collapse"
     options['aria-controls']  = options[:collapse_id]
-    options['aria-expanded']  = options.delete(:collapse_show) || true
+    options['aria-expanded']  = options[:collapse_hidden] ? false : true
     
     caret_link(url_or_options, options)
   end
@@ -217,21 +224,24 @@ module BootstrapHelper
     main_class    = tag_name == :button ? 'btn-group' : 'dropdown'
     main_class    = [main_class, options.delete(:main_class)].compact.join(' ')
     current_title = @selected || t('sort.not_selected') if options.delete(:selected_in_title)
-    current_title = current_title + caret_tag
+    current_title = caret_icon(current_title)
     
     options['id']            ||= "dropdown_#{name}"
     options['data-toggle']   ||= 'dropdown'
     options['aria-haspopup'] ||= 'true'
     options['aria-expanded'] ||= 'false'
-    options[:btn_style]      ||= 'secondary' if tag_name == :button
-    options[:class] = ["btn btn-#{options.delete(:btn_style)}", options[:class]].compact.join(' ')
+    
+    if tag_name == :button
+      options[:btn_style] ||= 'secondary'
+      options[:class] = ["btn btn-#{options.delete(:btn_style)}", options[:class]].compact.join(' ')
+    end
     
     content = content_tag(:div, class: 'dropdown-menu') { content_or_options }
     content_tag(:div, class: main_class) do
       if tag_name == :button
-        button_tag(current_title.html_safe, options).concat(content)
+        button_tag(current_title, options).concat(content)
       else
-        link_to(current_title.html_safe, 'javascript:;', options).concat(content)
+        link_to(current_title, 'javascript:;', options).concat(content)
       end
     end
   end

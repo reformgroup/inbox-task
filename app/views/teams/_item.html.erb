@@ -9,16 +9,12 @@
   <div class="media-body">
     <%= link_to item.name, team_path(item) %>
     <div class="pull-right">
-      <%= time_ago_tag item.created_at, class: 'm-r-1' %>
-      <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+      <%= time_ago_tag item.created_at %>
+      <%= collapse_caret_link(options) if item.children? %>
+      <i class="fa fa-ellipsis-h m-l-1" aria-hidden="true"></i>
     </div>
     <br>
     <small class="text-muted">No Members</small>
-    <% if item.children? %>
-      <div class="pull-right">
-        <%= collapse_caret_link(options) %>
-      </div>
-    <% end %>
   </div>
   <hr class="media-hr">
 </div>

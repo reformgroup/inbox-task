@@ -17,3 +17,16 @@ input[type=search]:focus {
     width: 100%;
 }
 */
+
+.search-bar {
+  @extend .navbar;
+}
+
+.search-bar {
+  .search-bar-close {
+    float: right;
+  }
+  .search-bar-input {
+    overflow: hidden;
+  }
+}

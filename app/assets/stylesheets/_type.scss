@@ -31,3 +31,11 @@ a.text-muted {
     color: $brand-primary;
   }
 }
+
+.on-hover-item {
+  display: none;
+}
+
+.on-hover:hover .on-hover-item {
+  display: inline-block;
+}

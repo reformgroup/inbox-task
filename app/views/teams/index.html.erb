@@ -23,7 +23,7 @@
   </div><!-- /.col -->
 </div><!-- /.row -->
 
-<%= arranged_tree(@teams.arrange(order: :created_at), collapse: true, collapse_caret_class: 'fa-lg text-muted') do |item, options| %>
+<%= arranged_tree(@teams.arrange(order: :created_at), collapse: true, caret_class: 'text-muted fa-lg m-l-1') do |item, options| %>
   <%= render 'item', item: item, options: options %>
 <% end %>
 
