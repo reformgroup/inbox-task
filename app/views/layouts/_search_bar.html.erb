@@ -1,14 +1,14 @@
 <div id="search-bar" class="search-bar collapse">
-  <div class="search-bar">
-    <div class='search-bar-close'>
-      <button class="btn btn-link nav-link p-x-0" type="button" data-toggle="collapse" data-target="#search-bar" aria-expanded="false" aria-controls="search-bar">
-        <i class="fa fa-times" aria-hidden="true"></i>
+  <div>
+    <div class='search-bar-close m-l-2' data-toggle="collapse" data-target="#search-bar" aria-expanded="false" aria-controls="search-bar">
+      <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class='search-bar-input'>
-      <%= search_tag teams_path %>
+      <%= search_tag users_path, class: "" %>
     </div>
   </div>
-  <div class="search-bar search-bar-results">
+  <div class="search-bar-results">
   </div>
 </div>
