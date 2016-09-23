@@ -38,7 +38,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.7'
   gem 'faker', '~> 1.6', '>= 1.6.3'
   gem 'rails-controller-testing', git: 'https://github.com/rails/rails-controller-testing'
-  gem 'rspec-rails', '3.5.0.beta1'
+  gem 'rspec-rails', '~> 3.5'
   gem 'spring'
 end
 
@@ -52,16 +52,16 @@ group :development do
 end
 
 group :test do
-    gem 'capybara', '~> 2.5'
+    gem 'capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ancestry', '~> 2.1'
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
+gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'font-awesome-sass', '~> 4.6', '>= 4.6.2'
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem "paperclip", '~> 5.0.0'
 gem 'validates_timeliness', '~> 4.0', '>= 4.0.2'
 gem 'will_paginate', '~> 3.1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'

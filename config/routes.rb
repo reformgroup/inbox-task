@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     get     '/signup',   to: 'signup_users#new'
     get     '/login',    to: 'sessions#new'
     get     '/logout',   to: 'sessions#destroy'
-
-    # resources :signup_users,  only: [:new, :create]
+    
+    # TODO: Edit get '/signup' and :signup_users
+    resources :signup_users,  only: [:new, :create]
     resources :sessions, only: [:new, :create, :destroy]
     resources :companies
     resources :users
