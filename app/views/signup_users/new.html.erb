@@ -29,24 +29,24 @@
 				</div>
 				<div class='form-group'>
 					<%= f.label :birth_date %><br>
-					<%= f.date_select :birth_date, { start_year: User.not_younger.year, end_year: User.not_older.year, prompt: true }, class: 'form-control c-select date-select' %>
+					<%= f.date_select :birth_date, { start_year: User.not_younger.year, end_year: User.not_older.year, prompt: true }, class: 'form-control custom-select date-select' %>
 					<%= error_messages @user, :birth_date %>
 				</div>
-        <label class='c-input c-radio'>
-          <%= f.radio_button :gender, :male %>
-          <span class='c-indicator'></span>
-          <%= User.human_attribute_name('gender.male') %>
+        <label class='custom-control custom-radio'>
+          <%= f.radio_button :gender, :male, class: 'custom-control-input' %>
+          <span class='custom-control-indicator'></span>
+        	<span class='custom-control-description'><%= User.human_attribute_name 'gender.male' %></span>
         </label>
-        <label class='c-input c-radio'>
-          <%= f.radio_button :gender, :female %>
-          <span class='c-indicator'></span>
-          <%= User.human_attribute_name('gender.female') %>
+        <label class='custom-control custom-radio'>
+          <%= f.radio_button :gender, :female, class: 'custom-control-input' %>
+          <span class='custom-control-indicator'></span>
+        	<span class='custom-control-description'><%= User.human_attribute_name 'gender.female' %></span>
         </label>
-				<br>
-				<%= error_messages @user, :gender %>
-				<br>
-				<%= f.submit t('.submit'), class: 'btn btn-primary' %>
-		  <% end %>
+  			<br>
+  			<%= error_messages @user, :gender %>
+  			<br>
+  			<%= f.submit t('.submit'), class: 'btn btn-primary' %>
+  		  <% end %>
 		</div>
 	</div>
 </div>
