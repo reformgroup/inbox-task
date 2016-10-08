@@ -16,7 +16,13 @@
 
 FactoryGirl.define do
   factory :team do
-    ancestry "MyString"
-    name "MyString"
+    name { Faker::Commerce.department }
+    
+    factory :team_with_subteam do
+      after(:build) do |team|
+        # create_list(:team, 3, parent: team)
+        team.parent = FactoryGirl.create(:team)
+      end
+    end
   end
 end

@@ -1,3 +1,22 @@
+.search-bar {
+  .search-bar-input {
+  }
+}
+
+.search.search-grey {
+  input, input:focus, .input-group-btn .btn {
+    border: 1px solid $gray-lighter;
+    background-color: $gray-lighter;
+  }
+  
+  .input-group-btn .btn {
+    color: $text-muted;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
 /*
 .input[type=search] {
     width: 130px;
@@ -18,6 +37,7 @@ input[type=search]:focus {
 }
 */
 
+/*
 .search-bar {
   position: absolute;
   padding: 20px 30px;
@@ -48,3 +68,4 @@ input[type=search]:focus {
     }
   }
 }
+*/

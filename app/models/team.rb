@@ -23,6 +23,9 @@ class Team < ApplicationRecord
   VALID_NAME_REGEX  = /[:alpha:\d -_]+/i
   
   has_ancestry
+  has_many :team_users
+  has_many :users, through: :team_users
+  accepts_nested_attributes_for :users
   
   validates :name, presence: true, length: { maximum: 50 }, 
             format: { with: VALID_NAME_REGEX }

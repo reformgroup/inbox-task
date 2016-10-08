@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160806021014) do
+ActiveRecord::Schema.define(version: 20161005175851) do
+
+  create_table "team_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.integer  "deleter_id"
+    t.index ["creator_id"], name: "index_team_users_on_creator_id"
+    t.index ["deleter_id"], name: "index_team_users_on_deleter_id"
+    t.index ["team_id"], name: "index_team_users_on_team_id"
+    t.index ["updater_id"], name: "index_team_users_on_updater_id"
+    t.index ["user_id"], name: "index_team_users_on_user_id"
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string   "ancestry"

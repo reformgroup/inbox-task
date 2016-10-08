@@ -24,8 +24,8 @@
 #
 
 class User < ApplicationRecord
-  include Searchable
   include Filterable
+  include Searchable
   include Sortable
   include Userstampable::Stampable
   include Userstampable::Stamper
@@ -38,6 +38,10 @@ class User < ApplicationRecord
   
   has_many :company_users
   has_many :companyes, through: :company_users
+  has_many :team_users
+  has_many :teams, through: :team_users
+  accepts_nested_attributes_for :teams
+  
   has_secure_password
   has_attached_file :avatar, 
     { 

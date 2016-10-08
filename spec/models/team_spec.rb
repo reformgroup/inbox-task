@@ -17,5 +17,7 @@
 require 'rails_helper'
 
 RSpec.describe Team, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:team) { build(:team) }
+  let(:not_valid_names) { %w(foo123 ,foo foo,bar) }
+  let(:valid_names) { %w(Foo fOO foo Foo-Bar Константин) }
 end

@@ -12,13 +12,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 
-
-.text-clip {
-  white-space: nowrap; /* Do not white-space */
-  overflow: hidden; /* Cropped anything that does not fit in the area */
-  text-overflow: ellipsis; /* Add a dot after cropped text */
-}
-
 a.black {
   color: #000;
   @include hover-focus {

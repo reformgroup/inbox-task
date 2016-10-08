@@ -15,7 +15,8 @@ module Searchable
       return self unless query
       raise ArgumentError, 'Required colunms missing.' unless colunms
       
-      query         = normalize_search_query query
+      query         = query.dup
+      query         = normalize_search_query query.dup
       query_str     = String.new
       query_params  = Array.new
       

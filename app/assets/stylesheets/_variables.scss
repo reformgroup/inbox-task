@@ -33,6 +33,12 @@ $media-text-middle-padding-top: $avatar-medium-size/2 - .75rem; // Avatar height
 $media-hr-margin-y: .5rem;
 
 // Sidebar
+$sidebar-bg:                                $gray-lightest !default; // $gray-lightest
+$sidebar-brand-text:                        $text-muted !default; // $text-muted
+$sidebar-nav-header-margin-top:             1rem !default;
+$sidebar-nav-header-text:                   $text-muted !default;
+$sidebar-nav-link-bg:                       darken($sidebar-bg, 5%) !default;
+$sidebar-nav-link-text:                     #000 !default;
 $sidebar-content-padding-y:                 1rem !default;
 $sidebar-width:                             18.75rem !default; // 300px
 $sidebar-link-padding-x:                    1rem !default;
@@ -40,7 +46,6 @@ $sidebar-link-padding-y:                    .625rem !default;
 $sidebar-submenu-link-padding-y:            .4rem !default;
 $sidebar-submenu-link-padding-left-default: $sidebar-link-padding-x + 1.5rem;
 $sidebar-submenu-link-padding-left:         1rem !default;
-$sidebar-nav-header-margin-top:             1rem !default;
 $sidebar-nav-submenu-level-max:             5;
 $zindex-sidebar-wrapper:                    1000 !default;
 

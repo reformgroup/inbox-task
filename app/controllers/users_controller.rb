@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   
   # GET /users
   def index
-    @users = User.search(params[:search], :last_name, :first_name, :email).sort(params[:sort], params[:direction]).paginate(page: params[:page])
+    @users = User.search(params[:search], :last_name, :first_name, :email).sorting(params[:sort], params[:direction]).paginate(page: params[:page])
   end
 
   # GET /users/1
@@ -30,9 +30,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, success: t('.flash.success.message') }
       else
-        format.html { render :new }
+        format.html { render :new, danger: t('.flash.danger.message') }
       end
     end
   end
@@ -41,9 +41,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, success: t('.flash.success.message') }
       else
-        format.html { render :edit }
+        format.html { render :edit, danger: t('.flash.danger.message') }
       end
     end
   end
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url success: t('.flash.success.message') }
     end
   end
 

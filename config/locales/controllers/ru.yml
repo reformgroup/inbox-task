@@ -4,20 +4,19 @@ ru:
       flash:
         danger:
           message: "Для начала нужно зайти в свою учётную запись или зарегистрироваться."
-  settings:
-    users:
-      create:
-        flash:
-          success:
-            message: "Пользователь создан."
-      update:
-        flash:
-          success:
-            message: "Информация обновлена."
-      destroy:
-        flash:
-          success:
-            message: "Пользователь удалён."
+  users:
+    create:
+      flash:
+        success:
+          message: "Пользователь создан."
+    update:
+      flash:
+        success:
+          message: "Информация обновлена."
+    destroy:
+      flash:
+        success:
+          message: "Пользователь удалён."
   signup_users:
     create:
       flash:
@@ -34,5 +33,5 @@ ru:
     create:
       flash:
         success:
-          title: "Поздравляем!"
-          message: "Вы зарегистрировали Ваш банк."
+          title: "Ура!"
+          message: "Вы зарегистрировали Вашу компанию."

@@ -2,19 +2,17 @@
 
 <h6 class='text-muted'><%= t 'activerecord.models.team.name' %></h6>
 <h2 class="d-inline"><%= t '.title' %></h2>
+<div class='pull-right'>
+  <%= link_to t('.add_team_link'), new_team_path, class: 'btn btn-outline-primary' %>
+</div>
       
-<hr class='m-b-3'>
-<div class='row m-b-3'>
-  <div class='col-<%= grid %>-6'>
-    <%= search_tag teams_path, id: 'team-search' %>
-  </div><!-- /.col -->
-  <div class='col-<%= grid %>-6'>
-    <div class='pull-right'>
-      <%= link_to t('.add_team_link'), new_team_path, class: 'btn btn-secondary' %>
-    </div>
+<hr class='m-y-1'>
+<div class='row m-b-1'>
+  <div class='<%= column_class %> search'>
+    <%= search_tag users_path, id: 'team-search', class: 'search search-grey' %>
   </div><!-- /.col -->
 </div><!-- /.row -->
-<div class='row m-b-2'>
+<div class='row m-b-3'>
   <div class='<%= column_class %>'>
     <%= link_sort_tag(:sort, main_class: 'default-link-style', selected_in_title: true) do %>
       <%= option_for_sort(:name, t('.sort_by_name'), default: true) %>

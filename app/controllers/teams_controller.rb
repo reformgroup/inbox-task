@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
   
   # GET /teams
   def index
-    @teams = Team.search(params[:search], :name).sort(params[:sort], params[:direction]).paginate(page: params[:page])
+    @teams = Team.search(params[:search], :name).sorting(params[:sort], params[:direction]).paginate(page: params[:page])
   end
 
   # GET /teams/1
@@ -29,9 +29,9 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { redirect_to @team, success: t('.flash.success.message') }
       else
-        format.html { render :new }
+        format.html { render :new, danger: t('.flash.danger.message') }
       end
     end
   end
@@ -40,9 +40,9 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to @team, success: t('.flash.success.message') }
       else
-        format.html { render :edit }
+        format.html { render :edit, danger: t('.flash.danger.message') }
       end
     end
   end
@@ -51,7 +51,7 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
+      format.html { redirect_to teams_url, success: t('.flash.success.message') }
     end
   end
   

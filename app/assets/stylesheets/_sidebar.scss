@@ -42,13 +42,26 @@
   height: 100%;
   margin-left: -$sidebar-width;
   overflow-y: auto;
-  background: $gray-lightest;
+  background: $sidebar-bg;
   @extend %transition;
 }
 
 #page-content-wrapper {
   width: 100%;
   position: absolute;
+}
+
+// Sidebar brand
+.sidebar-nav .nav-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+  
+  a.nav-link,
+  a.nav-link:hover, {
+    color: $sidebar-brand-text;
+    background: none;
+  }
 }
 
 // Sidebar Styles
@@ -73,7 +86,7 @@
   padding-right: $sidebar-link-padding-x;
   display: block;
   margin-top: $sidebar-nav-header-margin-top;
-  color: $text-muted;
+  color: $sidebar-nav-header-text;
 }
 
 // Sidebar item
@@ -83,17 +96,17 @@
   
     //Submenu items
     .nav-item {
-      //background: darken($gray-lightest, 3%);
+      //background: darken($sidebar-bg, 3%);
     }
   
     .nav-link {
       padding: $sidebar-link-padding-y $sidebar-link-padding-x;
       display: block;
       text-decoration: none;
-      color: #000;
+      color: $sidebar-nav-link-text;
     
       &:hover {
-        background: darken($gray-lightest, 5%);
+        background: $sidebar-nav-link-bg;
       }
     }
   }
@@ -110,19 +123,6 @@
       padding-bottom: $sidebar-submenu-link-padding-y;
     }
     $submenu-link-class: "#{$submenu-link-class} > ";
-  }
-}
-
-// Sidebar brand
-.sidebar-nav .nav-brand {
-  height: 65px;
-  font-size: 18px;
-  line-height: 60px;
-  
-  a.nav-link,
-  a.nav-link:hover, {
-    color: $text-muted;
-    background: none;
   }
 }
 

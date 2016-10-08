@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_stamper
   after_filter  :reset_stamper
   
+  # Add new flash types
+  add_flash_types :success, :info, :warning, :danger 
+  
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
