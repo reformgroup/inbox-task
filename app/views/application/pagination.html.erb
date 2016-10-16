@@ -1,0 +1,10 @@
+<div class='row m-t-2'>
+  <div class='<%= column_class %>'>
+    <div class='pagination-block'>
+      <%= will_paginate collection, inner_window: 2, outer_window: 1 %>
+      <div class='pagination-info text-muted'>
+        <small><%= page_entries_info collection, model: model, html: false %></small>
+      </div><!-- /.pagination-info -->
+    </div><!-- /.pagination-block -->
+  </div><!-- /.col -->
+</div><!-- /.row -->
