@@ -38,8 +38,8 @@ class User < ApplicationRecord
   
   has_many :company_users
   has_many :companyes, through: :company_users
-  has_many :team_users
-  has_many :teams, through: :team_users
+  has_many :team_user
+  has_many :teams, through: :team_user
   accepts_nested_attributes_for :teams
   
   has_secure_password

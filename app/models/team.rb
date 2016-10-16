@@ -20,12 +20,12 @@ class Team < ApplicationRecord
   include Sortable
   include Userstampable::Stampable
   
-  VALID_NAME_REGEX  = /[:alpha:\d -_]+/i
+  VALID_NAME_REGEX  = /[[:word:][:punct:][:blank:]]+/i
   
   has_ancestry
-  has_many :team_users
-  has_many :users, through: :team_users
-  accepts_nested_attributes_for :users
+  has_many :team_user
+  has_many :users, through: :team_user
+  accepts_nested_attributes_for :users, allow_destroy: true
   
   validates :name, presence: true, length: { maximum: 50 }, 
             format: { with: VALID_NAME_REGEX }

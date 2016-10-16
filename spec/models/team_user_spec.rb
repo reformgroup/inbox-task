@@ -13,9 +13,8 @@
 #  deleter_id :integer
 #
 
-class TeamUser < ApplicationRecord
-  include Userstampable::Stampable
-  
-  belongs_to :team
-  belongs_to :user
+require 'rails_helper'
+
+RSpec.describe TeamUser, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

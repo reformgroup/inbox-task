@@ -12,10 +12,25 @@
       <div class='form-group row'>
         <%= f.label :parent, class: "#{dynamic_small_column_class} form-control-label" %>
         <div class='<%= dynamic_large_column_class %>'>
-          
           <%= f.select(:parent_id, @team_collection, { include_blank: true }, class: 'form-control custom-select') %>
         </div>
-      </div>
+      </div><!-- /.form-group.row -->
+      
+      <div class='form-group row'>
+        <div class='<%= dynamic_small_column_class %>'>
+          <%= t('.users') %>
+        </div>
+        <div class='<%= dynamic_large_column_class %>'>
+          <%= f.fields_for :users do |user_f| %>
+            <p class="item">
+              <%= user_f.object.name %>
+              <%= link_to "Remove", "javascript:void(0)", class: "remove" %>
+            </p>
+            <%= user_f.hidden_field(:_destroy) %>
+          <% end %>
+        </div>
+      </div><!-- /.form-group.row -->
+      
       <div class='row'>
         <div class='<%= "#{dynamic_small_column_offset_class} #{dynamic_large_column_class}" %>'>
           <% if action_name == 'edit' %>

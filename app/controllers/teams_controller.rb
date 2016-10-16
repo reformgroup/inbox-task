@@ -30,6 +30,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, success: t('.flash.success.message') }
+        format.js   {}
       else
         format.html { render :new, danger: t('.flash.danger.message') }
       end
@@ -69,7 +70,8 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(
         :name,
-        :parent_id
+        :parent_id,
+        users_attributes: [:_destroy]
       )
     end
 end

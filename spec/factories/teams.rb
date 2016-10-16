@@ -16,7 +16,7 @@
 
 FactoryGirl.define do
   factory :team do
-    name { Faker::Commerce.department }
+    name { Faker::Commerce.department(3, true).humanize }
     
     factory :team_with_subteam do
       after(:build) do |team|

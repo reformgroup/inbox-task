@@ -1,6 +1,6 @@
 // Avatar images
 .avatar {
-  @extend .img-circle;
+  border-radius: 50%;
 	background-size: cover;
 	background-position: center;
 }
@@ -10,7 +10,7 @@
 }
 
 .avatar.avatar-missing {
-	border: 1px dashed $avatar-border-color;
+	border: 1px solid $gray-lighter;
   background-color: $avatar-missing-bg;
 //  &:before {
 //    content: &#x2715;

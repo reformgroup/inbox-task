@@ -110,6 +110,7 @@ ru:
     edit:
       title: "Редактирование профиля команды"
     form:
+      users: "Участники"
       confirm:
         delete:
           button: "Удалить команду"

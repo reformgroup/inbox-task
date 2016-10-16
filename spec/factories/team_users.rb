@@ -13,9 +13,9 @@
 #  deleter_id :integer
 #
 
-class TeamUser < ApplicationRecord
-  include Userstampable::Stampable
-  
-  belongs_to :team
-  belongs_to :user
+FactoryGirl.define do
+  factory :team_user do
+    team nil
+    user nil
+  end
 end

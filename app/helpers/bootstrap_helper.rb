@@ -205,6 +205,34 @@ module BootstrapHelper
     option_for_dropdown name, url, options
   end
   
+  
+  # Nested Model Form
+  def link_to_remove(f, name)
+    name = name || remove_icon
+    f.hidden_field(:_destroy) + link_to(name, "#", "remove_fields(this); return false;")
+  end
+
+  def link_to_add(name, f, association)
+    new_object = f.object.class.reflect_on_association(association).klass.new
+    fields = f.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
+      render(association.to_s.singularize + "_fields", f: builder)
+    end
+    link_to(name, "#", "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\"); return false;")
+  end
+  
+  # Icons
+  def add_icon(name = nil, options = {})
+    icon('plus', name, options)
+  end
+  
+  def remove_icon(name = nil, options = {})
+    icon('times', name, options)
+  end
+  
+  def trash_icon(name = nil, options = {})
+    icon('trash', name, options)
+  end
+  
   private
   
   def sort_icon(current_direction)
