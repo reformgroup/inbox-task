@@ -59,8 +59,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ancestry', '~> 2.1'
 gem 'bootstrap', '~> 4.0.0.alpha4'
+gem 'cocoon'
 gem 'font-awesome-sass', '~> 4.6', '>= 4.6.2'
-gem "paperclip", '~> 5.0.0'
+gem 'paperclip', '~> 5.0.0'
 gem 'validates_timeliness', '~> 4.0', '>= 4.0.2'
 gem 'will_paginate', '~> 3.1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'

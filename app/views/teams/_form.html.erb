@@ -7,7 +7,7 @@
           <%= f.text_field :name, class: 'form-control' %>
           <%= error_messages f.object, :name %>
         </div>
-      </div>
+      </div><!-- /.form-group.row -->
 
       <div class='form-group row'>
         <%= f.label :parent, class: "#{dynamic_small_column_class} form-control-label" %>
@@ -22,11 +22,14 @@
         </div>
         <div class='<%= dynamic_large_column_class %>'>
           <%= f.fields_for :users do |user_f| %>
-            <p class="item">
+            <%= nested_for(user_f, destroy: true) do %>
               <%= user_f.object.name %>
-              <%= link_to "Remove", "javascript:void(0)", class: "remove" %>
-            </p>
-            <%= user_f.hidden_field(:_destroy) %>
+            <% end %>
+          <% end %>
+          <br>
+          <%= form_for(:users, remote: true) do |f| %>
+            <%= f.select(:user, @team_users_collection, { include_blank: true }, class: 'form-control custom-select') %>
+            <%= f.submit %>
           <% end %>
         </div>
       </div><!-- /.form-group.row -->

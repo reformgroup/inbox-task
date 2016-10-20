@@ -1,8 +1,11 @@
 # Delete nested item
-$(document).on 'turbolinks:load', ->
-  $('a.remove').on 'click', (e) ->
-    destroyField
-    $(this).parents('.item').remove()
-    $(this).parents('.item').append()
-    return
-  return
+removeObject = (element, objName) ->
+  $("[name='"+objName+"[_destroy]']").val(true)
+  $(element).closest('.removable-nested-fields').remove()
+ 
+$ ->
+  $('a.remove-nested-fields').click (e) ->
+    e.preventDefault()
+    
+    objName = $(this).data("object-name")
+    removeObject(this, objName)

@@ -63,7 +63,9 @@ class TeamsController < ApplicationController
     end
     
     def set_team_collection
-      @team_collection = Team.order(:name).map { |c| ["-" * c.depth + c.name,c.id] }
+      @team_users_collection = User.all
+      @team_collection = Team.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
+      }.sort{ |x,y| x.ancestry <=> y.ancestry }.map{ |c| ["-" * (c.depth - 1) + c.name,c.id] }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -71,7 +73,7 @@ class TeamsController < ApplicationController
       params.require(:team).permit(
         :name,
         :parent_id,
-        users_attributes: [:_destroy]
+        users_attributes: [:_destroy, :id]
       )
     end
 end

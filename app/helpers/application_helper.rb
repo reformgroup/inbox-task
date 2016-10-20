@@ -67,7 +67,7 @@ module ApplicationHelper
     end
   end
   
-  # HACK: Delete if not used
+  # TODO: Delete if not used
   def nav_link_to(link_text, link_path)
     options = {}
     options[:class] = 'nav-item'
@@ -76,6 +76,16 @@ module ApplicationHelper
       link_text << " <span class=""sr-only"">(current)</span>"
     end
     content_tag(:li, options) { link_to(link_text.html_safe, link_path, class: 'nav-link') }
+  end
+  
+  # Nested objects
+  def nested_for(object, options = {}, &block)
+    output = capture(&block)
+    output << link_to("Remove", "javascript:void(0)", class: "remove-nested-fields", "data-object-name": object.object_name) if options[:destroy]
+    
+    output = content_tag(:p, output, class: "removable-nested-fields")
+    output << object.hidden_field(:_destroy) if options[:destroy]
+    output.html_safe
   end
   
   # Ancestry
