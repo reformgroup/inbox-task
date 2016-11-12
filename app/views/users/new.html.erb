@@ -2,7 +2,7 @@
 <h6 class="text-muted"><%= t 'activerecord.models.user.name' %></h6>
 <h2><%= t '.title' %></h2>
 
-<hr class="m-b-3">
+<hr class="mb-3">
 <%= render('form', user: @user, 
   save_link: submit_tag(t('buttons.save'), class: 'btn btn-primary'), 
   cancel_link: link_to(t('buttons.cancel'), users_path, class: 'btn btn-link text-muted', role: 'button')) %>

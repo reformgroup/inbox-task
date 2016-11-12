@@ -1,7 +1,20 @@
 <% if Rails.env.development? %>
-<div class='row'>
+<br>
+<br>
+<div class="pull-right">
+  <a class="text-danger" data-toggle="collapse" href="#collapse-debug" aria-expanded="false" aria-controls="collapse-debug">
+    <%= icon('bug', 'Debug') %>
+  </a>
+</div>
+<br>
+<br>
+<div class='row collapse' id="collapse-debug">
   <div class='<%= column_class %>'>
-    <%= debug(params) %>
+    <div class="card card-outline-danger">
+      <div class="card-block text-muted">
+        <%= debug(params) %>
+      </div>
+    </div>
   </div>
 </div>
 <% end %>

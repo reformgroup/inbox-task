@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :set_team_collection, only: [:new, :edit]
+  before_action :set_team, :set_team_users, only: [:show, :edit, :update, :destroy]
+  before_action :set_team_ancestry, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_new_team_user, only: [:new, :edit]
   before_action :logged_in_user
   
   layout 'sidebar'
@@ -26,11 +27,10 @@ class TeamsController < ApplicationController
   # POST /teams
   def create
     @team = Team.new(team_params)
-
+    
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, success: t('.flash.success.message') }
-        format.js   {}
       else
         format.html { render :new, danger: t('.flash.danger.message') }
       end
@@ -62,18 +62,25 @@ class TeamsController < ApplicationController
       @team = Team.find(params[:id])
     end
     
-    def set_team_collection
-      @team_users_collection = User.all
+    def set_team_ancestry
       @team_collection = Team.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
       }.sort{ |x,y| x.ancestry <=> y.ancestry }.map{ |c| ["-" * (c.depth - 1) + c.name,c.id] }
     end
-
+    
+    def set_team_users
+      @team_users_collection = User.all.collect { |p| [ p.name, p.id ] }
+    end
+    
+    def set_new_team_user
+      @team_users_new = @team.team_users.build
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(
         :name,
         :parent_id,
-        users_attributes: [:_destroy, :id]
+        team_users_attributes: [:_destroy, :id, :user_id]
       )
     end
 end

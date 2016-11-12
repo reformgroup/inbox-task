@@ -6,13 +6,13 @@
   <%= link_to t('.add_team_link'), new_team_path, class: 'btn btn-outline-primary' %>
 </div>
       
-<hr class='m-y-1'>
-<div class='row m-b-1'>
+<hr class='my-1'>
+<div class='row mb-1'>
   <div class='<%= column_class %> search'>
     <%= search_tag users_path, id: 'team-search', class: 'search search-grey' %>
   </div><!-- /.col -->
 </div><!-- /.row -->
-<div class='row m-b-3'>
+<div class='row mb-3'>
   <div class='<%= column_class %>'>
     <%= link_sort_tag(:sort, main_class: 'default-link-style', selected_in_title: true) do %>
       <%= option_for_sort(:name, t('.sort_by_name'), default: true) %>
@@ -21,7 +21,7 @@
   </div><!-- /.col -->
 </div><!-- /.row -->
 
-<%= arranged_tree(@teams.arrange(order: :created_at), collapse: true, caret_class: 'text-muted fa-lg m-l-1') do |item, options| %>
+<%= arranged_tree(@teams.arrange(order: :created_at), collapse: true, caret_class: 'text-muted fa-lg ml-1') do |item, options| %>
   <%= render 'item', item: item, options: options %>
 <% end %>
 

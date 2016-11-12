@@ -81,7 +81,8 @@ module ApplicationHelper
   # Nested objects
   def nested_for(object, options = {}, &block)
     output = capture(&block)
-    output << link_to("Remove", "javascript:void(0)", class: "remove-nested-fields", "data-object-name": object.object_name) if options[:destroy]
+    output << '&nbsp;'.html_safe
+    output << link_to('&#10005;'.html_safe, "javascript:void(0)", class: "remove-nested-fields text-danger no-text-decoration", "data-object-name": object.object_name) if options[:destroy]
     
     output = content_tag(:p, output, class: "removable-nested-fields")
     output << object.hidden_field(:_destroy) if options[:destroy]
