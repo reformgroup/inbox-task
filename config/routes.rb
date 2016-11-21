@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :companies
     resources :users
-    resources :teams
+    resources :teams do
+      # resources :team_users, only: [:new, :create, :destroy]
+      # get :new_team_user, to: 
+      get '/teams/new_team_user', to: 'teams#new_team_user', as: :new_team_user
+    end
   end
 end

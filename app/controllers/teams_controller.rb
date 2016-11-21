@@ -22,6 +22,8 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+    @team_users = @team.team_users
+    @new_team_user = @team.team_users.build
   end
 
   # POST /teams
@@ -56,6 +58,15 @@ class TeamsController < ApplicationController
     end
   end
   
+  def new_team_user
+    @team = Team.find(params[:team_id])
+    @new_team_user = @team.team_users.build
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team
@@ -63,7 +74,7 @@ class TeamsController < ApplicationController
     end
     
     def set_team_ancestry
-      @team_collection = Team.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
+      @team_collection = Team.where.not(id: params[:id]).all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
       }.sort{ |x,y| x.ancestry <=> y.ancestry }.map{ |c| ["-" * (c.depth - 1) + c.name,c.id] }
     end
     
@@ -72,7 +83,7 @@ class TeamsController < ApplicationController
     end
     
     def set_new_team_user
-      @team_users_new = @team.team_users.build
+      @new_team_user = @team.team_users.build
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,4 +1,0 @@
-<p>
-  <%= f.select :id, User.all.collect { |p| [ p.name, p.id ] }, { include_blank: true }, class: 'form-control custom-select' %>
-  <%= link_to_remove_association "Remove user", f %>
-</p>

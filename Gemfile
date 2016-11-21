@@ -59,7 +59,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ancestry', '~> 2.2', '>= 2.2.2'
 gem 'bootstrap', '~> 4.0.0.alpha5'
-gem 'cocoon'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'paperclip', '~> 5.1'
 gem 'validates_timeliness', '~> 4.0', '>= 4.0.2'

@@ -1,0 +1,3 @@
+<%= form_for([@team, @new_team_user], remote: true) do |f| %>
+  <%= f.select(:user_id, @team_users_collection, { include_blank: true }, class: 'form-control custom-select', style: 'width:auto;') %>
+<% end %>

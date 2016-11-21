@@ -73,7 +73,7 @@ module ApplicationHelper
     options[:class] = 'nav-item'
     if request.path == link_path.split('?')[0]
       options[:class] << ' active'
-      link_text << " <span class=""sr-only"">(current)</span>"
+      link_text       << " <span class=""sr-only"">(current)</span>"
     end
     content_tag(:li, options) { link_to(link_text.html_safe, link_path, class: 'nav-link') }
   end
@@ -89,11 +89,19 @@ module ApplicationHelper
     output.html_safe
   end
   
+  def link_to_pre_add(name, f, association)
+    new_object  = f.object.class.reflect_on_association(association).klass.new
+    fields      = f.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
+      render(association.to_s.singularize + "_fields", f: builder)
+    end
+    link_to name, '#', onclick: "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"
+  end
+  
   # Ancestry
   def ancestry_parent_breadcrumbs(object, method)
     if object.parent
-      parent_tag      = link_to(object.parent.public_send(method), object.parent)
       grandparent_tag = ancestry_parent_breadcrumbs(object.parent, method)
+      parent_tag      = link_to(object.parent.public_send(method), object.parent)
       parent_tag      = grandparent_tag << " / " << parent_tag if grandparent_tag
       parent_tag
     end
