@@ -1,4 +1,4 @@
-<%= fields_for new_team_user do |f| %>
-    <%= f.select(:user_id, team_users_collection, { include_blank: true }, class: 'form-control custom-select', style: 'width:auto;') %>
+<%= builder.fields_for @new_team_user do |team_user_f| %>
+    <%= team_user_f.select(:user_id, @team_users_collection, { include_blank: true }, class: 'form-control custom-select', style: 'width:auto;') %>
 <% end %>
-<%= link_to "New Team User", team_new_team_user_path(team_id: @team), remote: :true %>
+<%= link_to "New Team User", team_new_team_user_path(team_id: @team, bulder: builder), remote: :true %>

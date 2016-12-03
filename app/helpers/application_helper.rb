@@ -84,7 +84,7 @@ module ApplicationHelper
     output << '&nbsp;'.html_safe
     output << link_to('&#10005;'.html_safe, "javascript:void(0)", class: "remove-nested-fields text-danger no-text-decoration", "data-object-name": object.object_name) if options[:destroy]
     
-    output = content_tag(:p, output, class: "removable-nested-fields")
+    output = content_tag(:p, output, class: "removable-nested-object")
     output << object.hidden_field(:_destroy) if options[:destroy]
     output.html_safe
   end
@@ -94,7 +94,9 @@ module ApplicationHelper
     fields      = f.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", f: builder)
     end
-    link_to name, '#', onclick: "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"
+    # link_to name, '#', onclick: "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"
+    link_to name, '#', class: "add-nested-object", data: { link: "this", association: association, content: fields }
+    # <a href="#" data-background-color="#990000">Paint it red</a>
   end
   
   # Ancestry

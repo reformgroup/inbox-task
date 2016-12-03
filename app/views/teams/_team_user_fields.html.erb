@@ -1,0 +1,6 @@
+<div class='nested-fields'>
+  <div class='form-group'>
+    <%= f.select(:user_id, @team_users_collection, { include_blank: true }, class: 'form-control custom-select', style: 'width:auto;') %>
+    <%= link_to_remove_association "Remove task", f %>
+  </div>
+</div>

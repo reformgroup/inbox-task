@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery with: :exception
   before_action :set_locale
-  before_filter :set_stamper
+  before_action :set_stamper
   after_filter  :reset_stamper
   
   # Add new flash types

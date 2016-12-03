@@ -1,7 +1,9 @@
 class TeamsController < ApplicationController
-  before_action :set_team, :set_team_users, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :set_team_ancestry, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_new_team_user, only: [:new, :edit]
+  before_action :set_team_users, only: [:new, :edit]
+  # before_action :set_new_team_user, only: [:new, :edit]
+  before_action :set_team_users_collection, only: [:new, :edit]
   before_action :logged_in_user
   
   layout 'sidebar'
@@ -22,8 +24,6 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
-    @team_users = @team.team_users
-    @new_team_user = @team.team_users.build
   end
 
   # POST /teams
@@ -58,13 +58,10 @@ class TeamsController < ApplicationController
     end
   end
   
+  # GET /teams/1/new_team_user/2
   def new_team_user
     @team = Team.find(params[:team_id])
     @new_team_user = @team.team_users.build
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
   
   private
@@ -79,11 +76,15 @@ class TeamsController < ApplicationController
     end
     
     def set_team_users
-      @team_users_collection = User.all.collect { |p| [ p.name, p.id ] }
+      @team_users = @team.team_users
     end
     
     def set_new_team_user
       @new_team_user = @team.team_users.build
+    end
+    
+    def set_team_users_collection
+      @team_users_collection = User.all.collect { |p| [ p.name, p.id ] }
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.
