@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :set_team_ancestry, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_team_users, only: [:new, :edit]
+  before_action :set_team_users, only: :edit
   # before_action :set_new_team_user, only: [:new, :edit]
   before_action :set_team_users_collection, only: [:new, :edit]
   before_action :logged_in_user

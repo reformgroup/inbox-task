@@ -27,7 +27,7 @@
               <%= render 'team_user_fields', f: team_user_f, team_users_collection: @team_users_collection %>
             <% end %>
             <div class='links'>
-              <%= link_to_add_association 'Add member', f, :team_users, { class: "test", data: { "association-insertion-method": "prepend", render_options: { locals: { sherlock: 'Holmes' }}} %>
+              <%= link_to_add_association 'Add member', f, :team_users, { class: "test", data: { "association-insertion-method": "prepend" }} %>
             </div>
           </div>
         </div>
