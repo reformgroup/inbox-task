@@ -19,7 +19,7 @@
           Team membership
         </div>
         <div class='<%= dynamic_large_column_class %>'>
-          <div id='team-users'>
+          <div id='team_users'>
             <div class='links'>
               <div class="row">
                 <div class='<%= column_class %>'>
@@ -38,11 +38,18 @@
           Team membership
         </div>
         <div class='<%= dynamic_large_column_class %>'>
-          <div id='team-users-new'>
-            <%= link_to 'Add member', new_team_team_user_path(@team), class: 'btn btn-outline-primary mb-1', remote: true %>
-            <%= f.fields_for :team_users do |team_user_f| %>
-              <%= render 'team_users/team_user', f: team_user_f, team_users_collection: @team_users_collection %>
+          <div id='team-user-select' class='new-nested-object'>
+            <%= f.fields_for :team_users, @new_team_user do |team_user_f| %>
+              <div class='form-group'>
+                <%= text_field_tag 'search_team_users', nil, class: 'form-control autocomplete autocomplete-search', data: { autocomplete_object_id: true, autocomplete_source: team_team_users_path(@team) } %>
+              </div>
+              <%= team_user_f.hidden_field :user_id, class: 'autocomplete autocomplete-value' %>
+              <%= render 'team_user_fields', f: team_user_f, team_users_collection: @team_users_collection %>
             <% end %>
+            
+            <%= link_to 'Add member', new_team_team_user_path(@team), class: 'btn btn-outline-primary mb-1 add-nested-object' %>
+          </div>
+          <div id='team-users-new' class='nested-objects'>
           </div>
         </div>
       </div><!-- /.form-group.row -->

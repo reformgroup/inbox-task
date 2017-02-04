@@ -1,7 +1,11 @@
 <div class='nested-fields'>
   <div class='form-group'>
-    <%= nested_for(f, destroy: true) do %>
-      <%= f.object.user.name %>
+    <%= fields_for @team do |f| %>
+      <%= f.fields_for :team_users, @team_users do |team_user_f| %>
+        <%= nested_for(team_user_f, destroy: true) do %>
+          <%= team_user_f.object.user.name %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>

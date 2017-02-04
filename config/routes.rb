@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :companies
     resources :users
     resources :teams do
-      resources :team_users, only: [:new, :create, :destroy]
+      resources :team_users, only: [:index, :new, :create, :destroy]
     end
       # resources :team_users, only: [:new, :create, :destroy]
       # get :new_team_user, to: 

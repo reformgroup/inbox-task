@@ -1,15 +1,1 @@
-"<%= puts 'start' %>"
-
-"<% fields_for @team do |f| %>"
-  
-  "<%= puts @team %>"
-  "<%= puts f %>"
-  
-
-  "<% f.fields_for :team_users do |team_user_f| %>"
-    $('#team-users-new').append("<%= team_user_f.object.user %>");
-    "<%= puts team_user_f.object.user %>"
-  "<% end %>"
-"<% end %>"
-  
-"<%= puts 'end' %>"
+$('#team-users-new').append("<%= j render('team_user') %>");

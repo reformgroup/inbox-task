@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :set_team_ancestry, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_team_users, only: :edit
-  # before_action :set_new_team_user, only: [:new, :edit]
+  before_action :set_new_team_user, only: [:new, :edit]
   before_action :set_team_users_collection, only: [:new, :edit]
   before_action :logged_in_user
   
@@ -84,7 +84,7 @@ class TeamsController < ApplicationController
     end
     
     def set_team_users_collection
-      @team_users_collection = User.all.collect { |p| [ p.name, p.id ] }
+      @team_users_collection = User.all.order(:last_name, :first_name).collect { |p| [ p.name, p.id ] }
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

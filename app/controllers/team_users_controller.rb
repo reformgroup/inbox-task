@@ -1,8 +1,14 @@
 class TeamUsersController < ApplicationController
   
+  def index
+    @users = User.order(:first_name).where("first_name like ?", "%#{params[:term]}%")
+    render json: @users.map { |u| { value: u.id, label: u.name } }
+  end
+  
   def new
     @team = Team.find(params[:team_id])
-    @new_team_user = @team.team_users.build
+    @team_users = @team.team_users
+    @new_team_user = @team.team_users.build(user_id: params[:user_id])
     respond_to do |format|
       format.html { render :new }
       format.js {}
@@ -10,8 +16,8 @@ class TeamUsersController < ApplicationController
   end
   
   def create
-    @team = TeamUser.new(team_user_params)
-    @team_user = @team.team_users.build(team_user_params)
+    @team = TeamUser.new(params[:team_id])
+    @team_user = @team.team_users.build(params[:user_id])
 
     respond_to do |format|
       if @team_user.save
