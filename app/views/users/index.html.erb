@@ -6,13 +6,13 @@
   <%= link_to t('.add_user_link'), new_user_path, class: 'btn btn-outline-primary' %>
 </div>
 
-<hr class='my-1'>
-<div class='row mb-1'>
+<hr class='my-3'>
+<div class='row mb-3'>
   <div class='<%= column_class %> search'>
     <%= search_tag users_path, id: 'users-search', class: 'search search-grey' %>
   </div><!-- /.col -->
 </div><!-- /.row -->
-<div class='row mb-3'>
+<div class='row mb-5'>
   <div class='<%= column_class %>'>
     <%= link_sort_tag(:sort, main_class: 'default-link-style', selected_in_title: true) do %>
       <%= option_for_sort(:last_name, t('.sort_by_name'), default: true) %>

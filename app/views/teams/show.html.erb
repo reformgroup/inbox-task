@@ -1,23 +1,40 @@
 <% provide :title, @team.name %>
 
 <h6 class='text-muted'><%= t 'activerecord.models.team.name' %></h6>
-<h2><%= t '.title' %></h2>
+<h5><%= t '.title' %></h5>
 
-<hr class='mb-3'>
-<div class='row mb-3'>
-  <div class='<%= column_class %> mb-1'>
+<hr class='mb-5'>
+<div class='row mb-5'>
+  <div class='<%= dynamic_small_column_class %>'>
+    <span class='text-muted'>Name</span>
+  </div><!-- /.col -->
+  <div class='<%= dynamic_large_column_class %>'>
     <h4><%= @team.name %></h4>
   </div><!-- /.col -->
   <% if @team.parent %>
     <div class='<%= dynamic_small_column_class %>'>
-      <span class='text-muted'><%= Team.human_attribute_name 'parent' %>
+      <span class='text-muted'><%= Team.human_attribute_name 'parent' %></span>
     </div><!-- /.col -->
     <div class='<%= dynamic_large_column_class %>'>
       <%= ancestry_parent_breadcrumbs(@team, :name) %>
     </div><!-- /.col -->
   <% end %>
+  <div class='<%= dynamic_small_column_class %>'>
+    <span class='text-muted'>Members</span>
+  </div><!-- /.col -->
+  <div class='<%= dynamic_large_column_class %> mb-3'>
+  <% @team.team_users.each do |team_user| %>
+    
+    <%= link_to user_path(team_user.user) do %>
+      <%= image_tag team_user.user.avatar.url(:medium), class: 'avatar avatar-medium' %>
+    <% end %>
+    <%= link_to team_user.user.name, user_path(team_user.user) %>
+    <br><br>
+    
+  <% end %>
+  </div><!-- /.col -->
 </div><!-- /.row -->
-<hr class='my-3'>
+<hr class='my-5'>
 <div class='block-content row'>
   <div class='<%= column_class %>'>
     <div class='pull-right'>

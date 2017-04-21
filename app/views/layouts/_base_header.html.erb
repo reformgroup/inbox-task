@@ -1,14 +1,14 @@
-<nav class='navbar navbar-main navbar-fixed-top navbar-light bg-white'>
-  <button class='navbar-toggler hidden-sm-up' type='button' data-toggle='collapse' data-target='#main-navbar'>
-    &#9776;
+<nav class='navbar navbar-main navbar-fixed-top navbar-toggleable-md navbar-light bg-white'>
+  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar-main' aria-expanded="false" >
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <div class='collapse navbar-toggleable-xs' id='main-navbar'>
+  <div class='collapse navbar-collapse' id='navbar-main'>
     <a class='navbar-brand' href='#'><%= app_name %></a>
-    <ul class='nav navbar-nav'>
+    <ul class='navbar-nav mr-auto'>
       <%= nav_link_to t('.individual'), root_path %>
       <%= nav_link_to t('.company'), root_path %>
     </ul>
-		<ul class='nav navbar-nav pull-right'>
+		<ul class='navbar-nav pull-right'>
       <%= render 'layouts/language_menu' %>
 			<% if logged_in? %>
 				<%= render 'layouts/user_menu' %>

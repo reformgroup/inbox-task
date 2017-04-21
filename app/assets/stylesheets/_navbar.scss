@@ -7,6 +7,14 @@
   .navbar-border-bottom {
     border-bottom: $border-width solid $navbar-main-border-color;
   }
+  // TODO: delete when fix this point in Bootstrap 4 alfa > 6
+  .navbar-nav {
+    flex-direction: row;
+    .nav-link {
+      padding-right: .5rem;
+      padding-left: .5rem;
+    }
+  }
 }
 
 .navbar-toggler {

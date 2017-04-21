@@ -230,7 +230,7 @@ module BootstrapHelper
   end
   
   def trash_icon(name = nil, options = {})
-    icon('trash', name, options)
+    icon('trash-o', name, options)
   end
   
   private

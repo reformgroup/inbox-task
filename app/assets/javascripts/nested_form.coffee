@@ -1,36 +1,82 @@
+# # Autocomplete plagin
+#
+$.fn.customAutocomplete = ->
+  @each (i, el) ->
+    el = $(el)
+    el.autocomplete
+      minLength: 1
+      source: el.data('autocomplete-source')
+      focus: (event, ui) ->
+        el.val ui.item.label
+        false
+      select: (event, ui) ->
+        el.val ''
+        el.next('.autocomplete.autocomplete-value').val ui.item.value
+        
+        url = el.data("new-nested-object-path")
+        data = $('.new-nested-group :input, .new-nested-object').serialize()
+        
+        $.ajax
+          url: url
+          data: data
+          dataType: 'script'
+        false
+  # TODO: if you change the search field to clear the field values
+  # $(this).on 'change keydown paste input', ->
+  #   $(this).next('.autocomplete.autocomplete-value').val ''
+
+# # Delete nested item
+removeNestedObject = (element, objName) ->
+  alert objName
+  $("[name='"+objName+"[_destroy]']").val true
+  $(element).closest('.removable-nested-object').remove()
+
+$(document).on 'click', 'a.remove-nested-object', ->
+  objName = $(this).data('object-name')
+  removeNestedObject(this, objName)
+
 # # On load
+#
 $(document).on 'turbolinks:load', ->
+  # $(".add-nested-object").on("ajax:success", (e, ajaxData, status, xhr) ->
+  #   $(".nested-objects").append xhr.responseText
+  #  ).on "ajax:error", (e, xhr, status, error) ->
+  #   $(".nested-objects").append "<p>ERROR</p>"
+  
   $('a.add-nested-object').click (e) ->
     e.preventDefault()
     
-    url = $(this).attr('href')
     # TODO: to simplify the selector
     # data = $(this).closest('.new-nested-object').find('input, textarea, select').serialize()
-    data = $(this).closest('.new-nested-object').find('select').val()
+    # data = $(this).closest('.new-nested-object').find('select').val()
     
-    alert data
-    
+    url = @href
+    data = $('.new-nested-group :input, .new-nested-object').serialize()
+
     $.ajax
       url: url
-      data: 
-        user_id: data
+      data: data
       dataType: 'script'
+  
+  $('.autocomplete.autocomplete-search').customAutocomplete()
 
-  $('.autocomplete.autocomplete-search').autocomplete
-    minLength: 1
-    source: $('.autocomplete.autocomplete-search').data('autocomplete-source')
-    focus: (event, ui) ->
-      $('.autocomplete.autocomplete-search').val ui.item.label
-      false
-    select: (event, ui) ->
-      $('.autocomplete.autocomplete-search').val ui.item.label
-      $('.autocomplete.autocomplete-value').val ui.item.value
-      false
+  # $('.autocomplete.autocomplete-search').on 'change keydown paste input', ->
+  #   $(this).next('.autocomplete.autocomplete-value').val ''
+  #
+  # $('.autocomplete.autocomplete-search').each (i, el) ->
+  #   el = $(el)
+  #   el.autocomplete
+  #     minLength: 1
+  #     source: el.data('autocomplete-source')
+  #     focus: (event, ui) ->
+  #       el.val ui.item.label
+  #       false
+  #     select: (event, ui) ->
+  #       el.val ui.item.label
+  #       el.next('.autocomplete.autocomplete-value').val ui.item.value
+  #       false
 
-# # Delete nested item
-# removeNestedObject = (element, objName) ->
-#   $("[name='"+objName+"[_destroy]']").val(true)
-#   $(element).closest('.removable-nested-fields').remove()
+
 #
 # addNestedObject = (link, association, content) ->
 #   new_id = (new Date).getTime()

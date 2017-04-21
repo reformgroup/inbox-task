@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :set_team_ancestry, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_team_users, only: :edit
-  before_action :set_new_team_user, only: [:new, :edit]
+  # before_action :set_new_team_user, only: [:new, :edit]
   before_action :set_team_users_collection, only: [:new, :edit]
   before_action :logged_in_user
   
@@ -58,10 +58,16 @@ class TeamsController < ApplicationController
     end
   end
   
-  # GET /teams/1/new_team_user/2
+  # GET /teams/1/search_team_user
+  def search_team_user
+    @users = User.order(:first_name).where("first_name like ?", "%#{params[:term]}%")
+    render json: @users.map { |u| { value: u.id, label: u.name } }
+  end
+  
+  # GET /teams/1/new_team_user
   def new_team_user
-    @team = Team.find(params[:team_id])
-    @new_team_user = @team.team_users.build
+    @team = Team.find(params[:id])
+    @new_team_user = @team.team_users.build(user_id: params[:user_id])
   end
   
   private
@@ -79,9 +85,9 @@ class TeamsController < ApplicationController
       @team_users = @team.team_users
     end
     
-    def set_new_team_user
-      @new_team_user = @team.team_users.build
-    end
+    # def set_new_team_user
+    #   @new_team_user = @team.team_users.build
+    # end
     
     def set_team_users_collection
       @team_users_collection = User.all.order(:last_name, :first_name).collect { |p| [ p.name, p.id ] }
