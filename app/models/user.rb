@@ -146,8 +146,8 @@ class User < ApplicationRecord
   end
   
   # Returns default format user name like "Konstantin Konstantinopolsky"
-  def name
-    nornmal_name
+  def name(name_format = :nornmal_name)
+    name_format == :short_name ? short_name : nornmal_name
   end
   
   # Save and returns new random password.

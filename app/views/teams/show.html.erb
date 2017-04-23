@@ -25,10 +25,8 @@
   <div class='<%= dynamic_large_column_class %> mb-3'>
   <% @team.team_users.each do |team_user| %>
     
-    <%= link_to user_path(team_user.user) do %>
-      <%= image_tag team_user.user.avatar.url(:medium), class: 'avatar avatar-medium' %>
-    <% end %>
-    <%= link_to team_user.user.name, user_path(team_user.user) %>
+    <%= link_to_user team_user.user %>
+
     <br><br>
     
   <% end %>
