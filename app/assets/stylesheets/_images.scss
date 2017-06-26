@@ -1,0 +1,76 @@
+// Circle images
+.circle {
+	background-size: cover;
+	background-position: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  
+  .circle-content {
+    position: relative;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  //@extend .d-flex;
+  //@extend .align-items-center;
+  //@extend .justify-content-center;
+}
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+
+  .circle-content { 
+    top: $size*0.25;
+    font-size: $size*0.5;
+    line-height: $size*0.5;
+  }
+}
+
+.circle.circle-original { @include circle($circle-size-original); }
+.circle.circle-medium { @include circle($circle-size-medium); }
+.circle.circle-thumb { @include circle($circle-size-thumb); }
+
+.circle.circle-img {
+	border: 1px solid $gray-lighter;
+}
+
+.circle.circle-missing {
+	border: 1px solid $gray-lighter;
+  background-color: $circle-bg-missing;
+}
+
+.circle.circle-bg-gray { background-color: $circle-bg-gray; }
+.circle.circle-bg-pink { background-color: $circle-bg-pink; }
+.circle.circle-bg-red { background-color: $circle-bg-red; }
+.circle.circle-bg-blue { background-color: $circle-bg-blue; }
+.circle.circle-bg-orange-light { background-color: $circle-bg-orange-light; }
+.circle.circle-bg-green { background-color: $circle-bg-green; }
+.circle.circle-bg-pink-dark { background-color: $circle-bg-pink-dark; }
+.circle.circle-bg-purple-dark { background-color: $circle-bg-purple-dark; }
+.circle.circle-bg-orange { background-color: $circle-bg-orange; }
+
+.circle-group {
+  width: $circle-size-medium * 2;
+  .circle {
+    position: relative;
+    float: left;
+    margin-left: $circle-group-margin-left;
+    &:nth-child(1) {
+      margin-left: 0;
+      z-index: 1;
+    }
+    &:nth-child(2) {
+      z-index: 2;
+    }
+    &:nth-child(3) {
+      z-index: 3;
+    }
+  }
+}
+
+.table td.circle {
+	width: $circle-size; 
+}

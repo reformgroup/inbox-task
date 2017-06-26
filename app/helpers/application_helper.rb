@@ -81,10 +81,12 @@ module ApplicationHelper
   # Nested objects
   def nested_for(object, options = {}, &block)
     output = capture(&block)
-    output << '&nbsp;'.html_safe
-    output << link_to(trash_icon, "javascript:void(0)", class: "remove-nested-object text-danger no-text-decoration", "data-object-name": object.object_name) if options[:destroy]
+    output << link_to(trash_icon, "javascript:void(0)", class: "remove-nested-object text-danger no-text-decoration ml-2", "data-object-name": object.object_name) if options[:destroy]
     
-    output = content_tag(:p, output, class: "removable-nested-object")
+    classes = "removable-nested-object"
+    classes = "#{classes} #{options[:class]}" if options[:class]
+    
+    output = content_tag(:div, output, class: classes)
     output << object.hidden_field(:_destroy) if options[:destroy]
     output.html_safe
   end

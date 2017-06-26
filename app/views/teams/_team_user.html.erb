@@ -1,8 +1,0 @@
-<div class='nested-fields'>
-  <div class='form-group'>
-    <% puts f.object.user.name %>
-    <%= nested_for(f, destroy: true) do %>
-      <%= f.object.user.name %>
-    <% end %>
-  </div>
-</div>

@@ -1,13 +1,25 @@
 // Variables
 
-// Avatar
-$avatar-original-size:      7.625rem !default; // 120px + 1px border * 2
-$avatar-medium-size:        3.25rem !default; // 50px + 1px border * 2
-$avatar-thumb-size:         2.375rem !default; // 38px + 1px border * 2
-$avatar-size:               3.125rem !default; // 50px
-$avatar-border-color:       darken($gray-lighter, 15%);
-$avatar-group-margin-left:  -2.5rem !default;
-$avatar-missing-bg:         #fff !default;
+// Circle
+$circle-size-original:      7.625rem !default; // 120px + 1px border * 2
+$circle-size-medium:        3.25rem !default; // 50px + 1px border * 2
+$circle-size-thumb:         2.375rem !default; // 38px + 1px border * 2
+$circle-size:               3.125rem !default; // 50px
+$circle-border-color:       darken($gray-lighter, 15%);
+$circle-group-margin-left:  -2rem !default;
+
+$circle-bg-missing:         #fff !default;
+$circle-bg-gray:            $gray-light !default; // $gray-lightest
+$circle-bg-pink:            #D2527F !default; // CABARET (pink)
+$circle-bg-red:             #EC644B !default; // SOFT RED (red)
+$circle-bg-blue:            #4183D7 !default; // ROYAL BLUE (blue)
+$circle-bg-orange-light:    #E9D460 !default; // CONFETTI (orange-light)
+$circle-bg-green:           #87D37C !default; // GOSSIP (green)
+$circle-bg-pink-dark:       #DB0A5B !default; // RAZZMATAZZ (pink-dark)
+$circle-bg-purple-dark:     #674172 !default; // HONEY FLOWER (purple-dark)
+// $circle-bg-aquamarine:   #4ECDC4 !default; // MEDIUM TURQUOISE (aquamarine)
+$circle-bg-orange:          #F89406 !default; // CALIFORNIA (orange)
+// $circle-bg-pink-dark:    #D24D57 !default; // CHESTNUT ROSE (pink-dark)
 
 // Block
 $blok-header-margin-top:      0;
@@ -29,8 +41,19 @@ $footer-dark-disabled-color:        rgba(255,255,255,.25) !default;
 $navbar-main-border-color: $hr-border-color;
 
 // Media
-$media-text-middle-padding-top: $avatar-medium-size/2 - .75rem; // Avatar height/2 - base line-height
+$media-text-middle-padding-top: $circle-size-medium/2 - .75rem; // Avatar height/2 - base line-height
 $media-hr-margin-y: .5rem;
+
+// Colors
+//
+// Main colors
+
+//$brand-primary: #04B3B3 !default;
+$brand-primary: #1ABC9C !default;
+$brand-success: #8CC152 !default;
+$brand-info:    #3BAFDA !default;
+$brand-warning: #F6BB42 !default;
+$brand-danger:  #DA4453 !default;
 
 // Sidebar
 $sidebar-bg:                                $gray-lightest !default; // $gray-lightest
@@ -48,18 +71,6 @@ $sidebar-submenu-link-padding-left-default: $sidebar-link-padding-x + 1.5rem;
 $sidebar-submenu-link-padding-left:         1rem !default;
 $sidebar-nav-submenu-level-max:             5;
 $zindex-sidebar-wrapper:                    1000 !default;
-
-//
-//== Colors
-//
-
-//== Main colors
-//$brand-primary: #04B3B3 !default;
-$brand-primary: #1ABC9C !default;
-$brand-success: #8CC152 !default;
-$brand-info:    #3BAFDA !default;
-$brand-warning: #F6BB42 !default;
-$brand-danger:  #DA4453 !default;
 
 //== Form states and alerts
 //

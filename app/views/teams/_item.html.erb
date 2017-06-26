@@ -1,20 +1,14 @@
-<div class="media">
-  <div class="media-left">
-    <div class="avatar avatar-group">
-      <div class="avatar avatar-medium avatar-missing"></div>
-      <div class="avatar avatar-medium avatar-missing"></div>
-      <div class="avatar avatar-medium avatar-missing"></div>
+<div class="d-flex justify-content-end">
+  <div class="mr-auto d-inline-flex">
+    <div class="circle-group mr-2">
+      <%= user_avatar_collection item.team_users %>
     </div>
-  </div><!-- /.media-left -->
-  <div class="media-body">
-    <%= link_to item.name, team_path(item) %>
-    <div class="pull-right">
-      <%= time_ago_tag item.created_at %>
-      <%= collapse_caret_link(options) if item.children? %>
-      <i class="fa fa-ellipsis-h ml-3" aria-hidden="true"></i>
+    <div>
+      <%= link_to item.name, team_path(item) %>
     </div>
-    <br>
-    <small class="text-muted">No Members</small>
-  </div><!-- /.media-body -->
-</div><!-- /.media -->
+  </div>
+  <%= time_ago_tag item.created_at %>
+  <%= collapse_caret_link(options) if item.children? %>
+  <i class="fa fa-ellipsis-h ml-3" aria-hidden="true"></i>
+</div>
 <hr class="my-2">

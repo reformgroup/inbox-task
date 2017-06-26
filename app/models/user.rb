@@ -46,7 +46,7 @@ class User < ApplicationRecord
   has_attached_file :avatar, 
     { 
       styles: { original: '120x120#', medium: '50x50#', thumb: '38x38#' }, 
-      default_url: '/images/:class/:attachment/:style/missing.png',
+      # default_url: '/images/:class/:attachment/:style/missing.png',
       url: "#{AVATAR_PATH}/:hash.:extension",
       path: ":rails_root/public#{AVATAR_PATH}/:hash.:extension",
       hash_data: AVATAR_PATH,
@@ -102,6 +102,11 @@ class User < ApplicationRecord
     end
   end
   
+  # Returns user avatar img if it present, else nil
+  def avatar_img(size)
+    self.avatar.url(size) if self.avatar.file?
+  end
+  
   # Returns the user's age.
   def age
     if self.birth_date
@@ -135,6 +140,11 @@ class User < ApplicationRecord
     update_attribute :remember_digest, nil
   end
   
+  # Returns initials user name like "KK"
+  def initials
+    "#{self.first_name[0].upcase}#{self.last_name[0].upcase}"
+  end
+  
   # Returns short user name like "Konstantin K."
   def short_name
     "#{self.first_name} #{self.last_name[0]}."
@@ -147,7 +157,11 @@ class User < ApplicationRecord
   
   # Returns default format user name like "Konstantin Konstantinopolsky"
   def name(name_format = :nornmal_name)
-    name_format == :short_name ? short_name : nornmal_name
+    case name_format
+    when :short_name then short_name
+    when :initials then initials
+    else nornmal_name
+    end
   end
   
   # Save and returns new random password.

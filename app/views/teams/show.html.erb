@@ -24,11 +24,7 @@
   </div><!-- /.col -->
   <div class='<%= dynamic_large_column_class %> mb-3'>
   <% @team.team_users.each do |team_user| %>
-    
-    <%= link_to_user team_user.user %>
-
-    <br><br>
-    
+    <%= link_to_user_avatar team_user.user, class: 'd-inline-block', title_name: true %>
   <% end %>
   </div><!-- /.col -->
 </div><!-- /.row -->

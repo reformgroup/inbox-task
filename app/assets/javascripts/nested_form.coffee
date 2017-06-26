@@ -27,7 +27,6 @@ $.fn.customAutocomplete = ->
 
 # # Delete nested item
 removeNestedObject = (element, objName) ->
-  alert objName
   $("[name='"+objName+"[_destroy]']").val true
   $(element).closest('.removable-nested-object').remove()
 
