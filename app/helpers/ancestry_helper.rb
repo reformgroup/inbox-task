@@ -1,4 +1,9 @@
 module AncestryHelper
+  
+  # TODO:
+  # 1. To simplify your code. 
+  # 2. To remove repeated queries
+  
   # arranged as tree expects 3 arguments. The hash from has_ancestry.arrange() method, 
   # options, and a render block
   def arranged_tree(hash, options = {}, &block)

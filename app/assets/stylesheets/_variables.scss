@@ -8,19 +8,6 @@ $circle-size:               3.125rem !default; // 50px
 $circle-border-color:       darken($gray-lighter, 15%);
 $circle-group-margin-left:  -2rem !default;
 
-$circle-bg-missing:         #fff !default;
-$circle-bg-gray:            $gray-light !default; // $gray-lightest
-$circle-bg-pink:            #D2527F !default; // CABARET (pink)
-$circle-bg-red:             #EC644B !default; // SOFT RED (red)
-$circle-bg-blue:            #4183D7 !default; // ROYAL BLUE (blue)
-$circle-bg-orange-light:    #E9D460 !default; // CONFETTI (orange-light)
-$circle-bg-green:           #87D37C !default; // GOSSIP (green)
-$circle-bg-pink-dark:       #DB0A5B !default; // RAZZMATAZZ (pink-dark)
-$circle-bg-purple-dark:     #674172 !default; // HONEY FLOWER (purple-dark)
-// $circle-bg-aquamarine:   #4ECDC4 !default; // MEDIUM TURQUOISE (aquamarine)
-$circle-bg-orange:          #F89406 !default; // CALIFORNIA (orange)
-// $circle-bg-pink-dark:    #D24D57 !default; // CHESTNUT ROSE (pink-dark)
-
 // Block
 $blok-header-margin-top:      0;
 $blok-header-margin-bottom:   3rem !default;
@@ -44,6 +31,16 @@ $navbar-main-border-color: $hr-border-color;
 $media-text-middle-padding-top: $circle-size-medium/2 - .75rem; // Avatar height/2 - base line-height
 $media-hr-margin-y: .5rem;
 
+$height: 3.25rem !default;
+$heights: (
+  0: 0,
+  1: ($height * .5),
+  2: $height,
+  3: ($height * 1.5),
+  4: ($height * 3),
+  5: ($height * 3,25)
+) !default;
+
 // Colors
 //
 // Main colors
@@ -54,6 +51,20 @@ $brand-success: #8CC152 !default;
 $brand-info:    #3BAFDA !default;
 $brand-warning: #F6BB42 !default;
 $brand-danger:  #DA4453 !default;
+
+$colors-map: (
+  "gray":           $gray-light, // $gray-lightest
+  "pink":           #D2527F, // CABARET (pink)
+  "red":            #EC644B, // SOFT RED (red)
+  "blue":           #4183D7, // ROYAL BLUE (blue)
+  "orange-light":   #E9D460, // CONFETTI (orange-light)
+  "green":          #87D37C, // GOSSIP (green)
+  "pink-dark":      #DB0A5B, // RAZZMATAZZ (pink-dark)
+  "purple-dark":    #674172, // HONEY FLOWER (purple-dark)
+  // "aquamarine":  #4ECDC4, // MEDIUM TURQUOISE (aquamarine)
+  "orange":         #F89406, // CALIFORNIA (orange)
+  // "dark":        #D24D57, // CHESTNUT ROSE (pink-dark)
+) !default;
 
 // Sidebar
 $sidebar-bg:                                $gray-lightest !default; // $gray-lightest

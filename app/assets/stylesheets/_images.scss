@@ -39,18 +39,12 @@
 
 .circle.circle-missing {
 	border: 1px solid $gray-lighter;
-  background-color: $circle-bg-missing;
+  background-color: $white;
 }
 
-.circle.circle-bg-gray { background-color: $circle-bg-gray; }
-.circle.circle-bg-pink { background-color: $circle-bg-pink; }
-.circle.circle-bg-red { background-color: $circle-bg-red; }
-.circle.circle-bg-blue { background-color: $circle-bg-blue; }
-.circle.circle-bg-orange-light { background-color: $circle-bg-orange-light; }
-.circle.circle-bg-green { background-color: $circle-bg-green; }
-.circle.circle-bg-pink-dark { background-color: $circle-bg-pink-dark; }
-.circle.circle-bg-purple-dark { background-color: $circle-bg-purple-dark; }
-.circle.circle-bg-orange { background-color: $circle-bg-orange; }
+@each $name, $color in $colors-map {
+  .circle.circle-bg-#{$name} { background-color: $color; }
+}
 
 .circle-group {
   width: $circle-size-medium * 2;

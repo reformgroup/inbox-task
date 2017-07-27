@@ -1,0 +1,21 @@
+<!-- TODO: move code to main_search.html.erb -->
+
+<% if false %>
+
+<form class="form-inline search search-grey w-100 ml-auto">
+  <div class="input-group w-100">
+    <input type="text" class="form-control" placeholder="Search...">
+    <span class="input-group-btn">
+      <button class="btn btn-secondary" type="button" data-toggle="collapse" href="#main-search" aria-expanded="false" aria-controls="main-search">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </span>
+  </div>
+  <input type="hidden" name="direction" id="direction" value="asc">
+  <input type="hidden" name="sort" id="sort" value="last_name">
+</form>
+
+<% end %>
+
+<%= search_form_tag(users_path) %>
+

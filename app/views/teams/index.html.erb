@@ -1,23 +1,30 @@
 <% provide :title, t('.title') %>
+<% provide :page_live_search, true %>
 
 <%= render 'content_header', 
   title: t('.title'), 
   subtitle: t('activerecord.models.team.name'), 
   control: link_to(t('.add_team_link'), new_team_path, class: 'btn btn-outline-primary') %>
 
-<div class='row mb-3'>
-  <div class='<%= column_class %> search'>
-    <%= search_tag users_path, id: 'team-search', class: 'search search-grey' %>
-  </div><!-- /.col -->
-</div><!-- /.row -->
-<div class='row mb-5'>
-  <div class='<%= column_class %>'>
-    <%= link_sort_tag(:sort, main_class: 'default-link-style', selected_in_title: true) do %>
-      <%= option_for_sort(:name, t('.sort_by_name'), default: true) %>
-      <%= option_for_sort(:created_at, t('.sort_by_created_at')) %>
-    <% end %>
-  </div><!-- /.col -->
-</div><!-- /.row -->
+<!-- TODO: move code to main_search.html.erb -->
+
+<% if false %>
+
+  <div class='row mb-3'>
+    <div class='<%= column_class %> search'>
+      <%= search_tag users_path, id: 'team-search', class: 'search search-grey' %>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class='row mb-5'>
+    <div class='<%= column_class %>'>
+      <%= link_sort_tag(:sort, main_class: 'default-link-style', selected_in_title: true) do %>
+        <%= option_for_sort(:name, t('.sort_by_name'), default: true) %>
+        <%= option_for_sort(:created_at, t('.sort_by_created_at')) %>
+      <% end %>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+<% end %>
 
 <%= arranged_tree(@teams.arrange(order: :created_at), collapse: true, caret_class: 'text-muted fa-lg ml-1') do |item, options| %>
   <%= render 'item', item: item, options: options %>

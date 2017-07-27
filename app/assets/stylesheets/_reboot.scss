@@ -24,6 +24,10 @@ body {
   display: inline-block;
 }
 
+@each $size, $length in $heights {
+  .h-#{$size} { height: $length !important; }
+}
+
 // File upload
 .btn-file {
 	position: relative;

@@ -1,14 +1,17 @@
-<div class="d-flex justify-content-end">
-  <div class="mr-auto d-inline-flex">
+<div class="d-flex justify-content-end h-2">
+  <div>
     <div class="circle-group mr-2">
       <%= user_avatar_collection item.team_users %>
     </div>
-    <div>
-      <%= link_to item.name, team_path(item) %>
+  </div>
+  <div class="mr-auto text-truncate">
+    <%= link_to item.name, team_path(item) %>
+    <%= collapse_caret_link(options) if item.children? %>
+  </div>
+  <div>
+    <div class="text-nowrap">
+      <%= time_ago_in_words item.created_at %>
     </div>
   </div>
-  <%= time_ago_tag item.created_at %>
-  <%= collapse_caret_link(options) if item.children? %>
-  <i class="fa fa-ellipsis-h ml-3" aria-hidden="true"></i>
 </div>
 <hr class="my-2">

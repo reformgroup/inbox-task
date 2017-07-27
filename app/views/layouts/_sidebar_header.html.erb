@@ -1,3 +1,8 @@
+<div class="collapse p-absolute w-100" id="main-search">
+  <nav class='navbar navbar-main navbar-light bg-white d-flex justify-content-start sticky-top' id="main-search">
+    <%= render 'layouts/main_search' %>
+  </nav><!--/.navbar -->
+</div>
 <nav class='navbar navbar-main navbar-light bg-white d-flex justify-content-start'>
   <ul class='navbar-nav'>
     <button class='navbar-toggler' type='button' data-toggle='collapse' id='menu-toggle'>
@@ -9,7 +14,11 @@
         <i class="fa fa-search" aria-hidden="true"></i>
       </a>
     </li> -->
-    <%= render 'layouts/language_menu' %>
+    <li class='nav-item ml-auto'>
+    	<a class='nav-link' data-toggle="collapse" href="#main-search" aria-expanded="false" aria-controls="main-search">
+        <%= icon('search', nil, class: 'fa-fw text-muted') %>
+      </a>
+    </li>
     <%= render 'layouts/user_menu' %>
   </ul>
 </nav><!--/.navbar -->

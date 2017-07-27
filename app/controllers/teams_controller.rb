@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
-    @team = Team.new(parent_id: params[:parent_id])
+    @team = Team.new #(parent_id: params[:parent_id])
   end
 
   # GET /teams/1/edit
@@ -66,7 +66,8 @@ class TeamsController < ApplicationController
   
   # GET /teams/1/new_team_user
   def new_team_user
-    @team = Team.find(params[:id])
+    @team = Team.new
+    # @team = Team.find(params[:id])
     @new_team_user = @team.team_users.build(user_id: params[:user_id])
   end
   

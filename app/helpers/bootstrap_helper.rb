@@ -97,10 +97,14 @@ module BootstrapHelper
     options['aria-controls']  = options[:collapse_id]
     options['aria-expanded']  = options[:collapse_hidden] ? false : true
     
-    caret_link(url_or_options, options)
+    caret_link url_or_options, options
   end
   
   # ==== Examples
+  #
+  # TODO: Update example
+  # TODO: Check all params[...] in controllers and helpers for safety
+  
   #   search_tag(users_path, id: "users-search")
   #   # => <form id="users-search" role="search" action="/users" accept-charset="UTF-8" method="get">
   #   #      <input name="utf8" type="hidden" value="✓">
@@ -112,14 +116,22 @@ module BootstrapHelper
   #   #      </div>
   #   #    </form>
   #
-  def search_tag(url, options = {})
+  def search_form_tag(url, options = {})
     options           ||= {}
     options[:role]    ||= 'search'
     options[:method]  ||= 'get'
-    options[:id]      ||= 'index-search'
-    content = content_tag(:div, class: 'input-group-btn') { button_tag(icon('search'), class: 'btn btn-secondary') }
-    content = search_field_tag(:search, params[:search], class: 'form-control', placeholder: t('placeholder.search')).concat(content)
-    content = content_tag(:div, content, class: 'input-group')
+    options[:id]      ||= 'main-search'
+    options[:class]   ||= 'form-inline search search-grey w-100 ml-auto'
+    
+    content = content_tag(:span, class: 'input-group-btn') do
+      button_tag(class: 'btn btn-secondary', 'data-toggle': 'collapse', 'data-target': '#main-search', 'aria-expanded': false, 'aria-controls': 'main-search') do
+        icon('times')
+      end
+    end
+    content = content_tag(:div, class: 'input-group w-100') do
+      search_field_tag(:search, params[:search], class: 'form-control', placeholder: t('placeholder.search')).concat(content)
+    end
+    
     content = content.concat(hidden_field_tag(:direction, params[:direction])) if params[:direction]
     content = content.concat(hidden_field_tag(:sort, params[:sort])) if params[:sort]
     
