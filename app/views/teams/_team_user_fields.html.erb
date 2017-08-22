@@ -1,7 +1,23 @@
-<%= f.fields_for :team_users, team_users, child_index: child_index do |team_user_f| %>
-  <%= nested_for(team_user_f, destroy: true, class: 'd-flex align-items-center mb-2') do %>
-    <%= link_to_user_avatar team_user_f.object.user, class: 'mr-2 d-inline-block' %>
-    <%= link_to_user team_user_f.object.user %>
-    <%= team_user_f.hidden_field :user_id %>
+<!-- TODO: Delete --> 
+
+
+
+  <%= f.fields_for :team_users, team_users, child_index: child_index do |team_user_f| %>
+    <%= nested_for(team_user_f, destroy: true, class: 'd-flex align-items-center mb-2') do %>
+      <%= link_to_user_avatar team_user_f.object.user, class: 'mr-2 d-inline-block' %>
+      <%= link_to_user team_user_f.object.user %>
+      <%= team_user_f.hidden_field :user_id %>
+    <% end %>
   <% end %>
+  
+<% if false %>
+
+<div class='nested-fields'>
+  <%= f.inputs do %>
+    <div class='nested-content d-flex align-items-center mb-2'></div>
+    <%= f.input :id %>
+    <%= link_to_remove_association "remove member", f %>
+  <% end %>
+</div>
+
 <% end %>

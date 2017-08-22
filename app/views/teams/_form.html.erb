@@ -20,7 +20,7 @@
         </div>
         <div class='<%= dynamic_large_column_class %>'>
           <div id='team-user-select' class='new-nested-group mb-3'>
-            <%= text_field_tag 'search_team_users', nil, class: 'form-control autocomplete autocomplete-search new-nested-object', data: { autocomplete_object_id: true, autocomplete_source: search_team_user_team_path(@team), new_nested_object_path: new_team_user_team_path(@team) } %>
+            <%= text_field_tag 'search_team_users', nil, class: 'form-control autocomplete autocomplete-search new-nested-object', data: { autocomplete_object_id: true, autocomplete_source: search_team_user_teams_path, new_nested_object_path: new_team_user_teams_path } %>
             <%= hidden_field_tag 'user_id', nil, class: 'autocomplete autocomplete-value new-nested-object' %>
           </div>
           <div id='team-users' class='nested-objects'>

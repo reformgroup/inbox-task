@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :companies
     resources :users
     resources :teams do
-      get :search_team_user, on: :member
-      get :new_team_user, on: :member
+      get :search_team_user, on: :collection
+      get :new_team_user, on: :collection
       # resources :team_users, only: [:index, :new, :create, :destroy]
     end
       # resources :team_users, only: [:new, :create, :destroy]

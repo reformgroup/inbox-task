@@ -8,6 +8,7 @@ $.fn.customAutocomplete = ->
       source: el.data('autocomplete-source')
       focus: (event, ui) ->
         el.val ui.item.label
+        el.data 'email', ui.item.email
         false
       select: (event, ui) ->
         el.val ''
