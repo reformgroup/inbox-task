@@ -34,11 +34,11 @@
 .circle.circle-thumb { @include circle($circle-size-thumb); }
 
 .circle.circle-img {
-	border: 1px solid $gray-lighter;
+	border: 1px solid $gray-200;
 }
 
 .circle.circle-missing {
-	border: 1px solid $gray-lighter;
+	border: 1px solid $gray-200;
   background-color: $white;
 }
 

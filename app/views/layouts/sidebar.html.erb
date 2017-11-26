@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= full_title(yield(:title)) %></title>
+  <title><%= full_title yield(:title) %></title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, cache: true %>
   <%= csrf_meta_tags %>
@@ -13,9 +13,19 @@
     <%= render 'layouts/sidebar_menu' %>
     <div id='page-content-wrapper'>
       <%= render 'layouts/sidebar_header' %>
-      <div class='sidebar-content'>
+      <div id='sidebar-content'>
         <div class='container'>
           <%= render 'layouts/flash' %>
+          <div class='d-flex justify-content-end'>
+            <div class='mr-auto text-truncate'>
+              <h2><%= yield :title %></h2>
+              <h6 class='text-muted'><%= yield :subtitle %></h6>
+            </div>
+            <div class='ml-3 pull-right'>
+              <%= yield :control %>
+            </div>
+          </div>
+          <hr class='mb-5'>
           <%= yield %>
           <%= render 'layouts/debug' %>
         </div><!-- /.container -->

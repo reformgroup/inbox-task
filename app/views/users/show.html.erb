@@ -1,9 +1,6 @@
 <% provide :title, @user.short_name %>
+<% provide :subtitle, t('activerecord.models.user.name') %>
 
-<h6 class='text-muted'><%= t 'activerecord.models.user.name' %></h6>
-<h2><%= t '.title' %></h2>
-
-<hr class='mb-5'>
 <div class='row mb-5'>
   <div class='col-<%= grid %>-3'>
     <%= user_avatar @user, size: :original %>

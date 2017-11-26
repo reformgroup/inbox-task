@@ -11,7 +11,7 @@
   transition: all 0.5s ease;
 }
 
-.sidebar-content {
+#sidebar-content {
   padding-top: $sidebar-content-padding-y; /* Padding top by navbar height */
   padding-bottom: $sidebar-content-padding-y;
 }
@@ -43,7 +43,7 @@
   margin-left: -$sidebar-width;
   overflow-y: auto;
   background: $sidebar-bg;
-  border-right: 1px solid $gray-lighter;
+  // border-right: 1px solid $gray-200;
   @extend %transition;
 }
 
@@ -147,7 +147,7 @@
     position: relative;
     margin-right: 0;
   }
-  .sidebar-content {
+  #sidebar-content {
     padding-left: .9375rem;
     padding-right: .9375rem;
   }

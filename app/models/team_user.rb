@@ -20,5 +20,5 @@ class TeamUser < ApplicationRecord
   belongs_to :user
   accepts_nested_attributes_for :team, :user, allow_destroy: true
   
-  validates :team, :user, presence: true
+  validates :user, presence: true
 end

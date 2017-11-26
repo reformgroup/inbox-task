@@ -1,27 +1,11 @@
 <% provide :title, t('.title') %>
-
-<!-- TODO: delete block after test -->
-
-<% if false %>
-
-<h6 class='text-muted'><%= t 'activerecord.models.user.name' %></h6>
-<h2 class="d-inline"><%= t '.title' %></h2>
-<div class='pull-right'>
-  <%= link_to t('.add_user_link'), new_user_path, class: 'btn btn-outline-primary' %>
-</div>
-
-<% end %>
-
-<%= render 'content_header', 
-  title: t('.title'), 
-  subtitle: t('activerecord.models.user.name'), 
-  control: link_to(t('.add_user_link'), new_user_path, class: 'btn btn-outline-primary') %>
+<% provide :subtitle, t('activerecord.models.user.name') %>
+<% provide :control, link_to(t('.add_user_link'), new_user_path, class: 'btn btn-outline-primary') %>
 
 <!-- TODO: move code to main_search.html.erb -->
 
 <% if false %>
 
-<hr class='my-3'>
 <div class='row mb-3'>
   <div class='<%= column_class %> search'>
     <%= search_tag users_path, id: 'users-search', class: 'search search-grey' %>

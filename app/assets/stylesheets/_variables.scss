@@ -5,7 +5,7 @@ $circle-size-original:      7.625rem !default; // 120px + 1px border * 2
 $circle-size-medium:        3.25rem !default; // 50px + 1px border * 2
 $circle-size-thumb:         2.375rem !default; // 38px + 1px border * 2
 $circle-size:               3.125rem !default; // 50px
-$circle-border-color:       darken($gray-lighter, 15%);
+$circle-border-color:       darken($gray-200, 15%);
 $circle-group-margin-left:  -2rem !default;
 
 // Block
@@ -53,7 +53,7 @@ $brand-warning: #F6BB42 !default;
 $brand-danger:  #DA4453 !default;
 
 $colors-map: (
-  "gray":           $gray-light, // $gray-lightest
+  "gray":           $gray-100, // $gray-100
   "pink":           #D2527F, // CABARET (pink)
   "red":            #EC644B, // SOFT RED (red)
   "blue":           #4183D7, // ROYAL BLUE (blue)
@@ -67,7 +67,7 @@ $colors-map: (
 ) !default;
 
 // Sidebar
-$sidebar-bg:                                $gray-lightest !default; // $gray-lightest
+$sidebar-bg:                                $gray-100 !default; // $gray-100est
 $sidebar-brand-text:                        $text-muted !default; // $text-muted
 $sidebar-nav-header-margin-top:             1rem !default;
 $sidebar-nav-header-text:                   $text-muted !default;

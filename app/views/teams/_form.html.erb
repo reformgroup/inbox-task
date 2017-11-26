@@ -19,12 +19,13 @@
           Team membership
         </div>
         <div class='<%= dynamic_large_column_class %>'>
-          <div id='team-user-select' class='new-nested-group mb-3'>
-            <%= text_field_tag 'search_team_users', nil, class: 'form-control autocomplete autocomplete-search new-nested-object', data: { autocomplete_object_id: true, autocomplete_source: search_team_user_teams_path, new_nested_object_path: new_team_user_teams_path } %>
-            <%= hidden_field_tag 'user_id', nil, class: 'autocomplete autocomplete-value new-nested-object' %>
+          <div class='mb-3'>
+            <%= autocomplete_to_add 'search_team_users', f, :team_users, search_team_user_teams_path, :id %>
           </div>
           <div id='team-users' class='nested-objects'>
-            <%= render 'team_user_fields', f: f, team_users: @team_users, child_index: nil %>
+            <%= f.fields_for :team_users, @team_users do |team_user_f| %>
+              <%= render 'team_user_fields', f: team_user_f, team_users: @team_users %>
+            <% end %>
           </div>
         </div>
       </div><!-- /.form-group.row -->

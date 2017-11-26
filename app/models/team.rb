@@ -28,7 +28,6 @@ class Team < ApplicationRecord
   accepts_nested_attributes_for :team_users, allow_destroy: true, reject_if: proc { |a| a['user_id'].blank? }
   accepts_nested_attributes_for :users
   
-  validates :name, presence: true, length: { maximum: 50 }, 
-            format: { with: VALID_NAME_REGEX }
+  validates :name, presence: true, length: { maximum: 50 }, format: { with: VALID_NAME_REGEX }
   validates_associated :team_users
 end

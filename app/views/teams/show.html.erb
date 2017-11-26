@@ -1,33 +1,23 @@
 <% provide :title, @team.name %>
+<% provide :subtitle, t('activerecord.models.team.name') %>
 
-<h6 class='text-muted'><%= t 'activerecord.models.team.name' %></h6>
-<h5><%= t '.title' %></h5>
-
-<hr class='mb-5'>
-<div class='row mb-5'>
-  <div class='<%= dynamic_small_column_class %>'>
-    <span class='text-muted'>Name</span>
-  </div><!-- /.col -->
-  <div class='<%= dynamic_large_column_class %>'>
-    <h4><%= @team.name %></h4>
-  </div><!-- /.col -->
+<dl class="row mb-5">
+  <dt class="<%= dynamic_small_column_class %>">Name</dt>
+  <dd class="<%= dynamic_large_column_class %>"><%= @team.name %></dd>
+  
   <% if @team.parent %>
-    <div class='<%= dynamic_small_column_class %>'>
-      <span class='text-muted'><%= Team.human_attribute_name 'parent' %></span>
-    </div><!-- /.col -->
-    <div class='<%= dynamic_large_column_class %>'>
-      <%= ancestry_parent_breadcrumbs(@team, :name) %>
-    </div><!-- /.col -->
+    <dt class="<%= dynamic_small_column_class %>"><%= Team.human_attribute_name 'parent' %></dt>
+    <dd class="<%= dynamic_large_column_class %>"><h4><%= ancestry_parent_breadcrumbs @team, :name %></h4></dd>
   <% end %>
-  <div class='<%= dynamic_small_column_class %>'>
-    <span class='text-muted'>Members</span>
-  </div><!-- /.col -->
-  <div class='<%= dynamic_large_column_class %> mb-3'>
-  <% @team.team_users.each do |team_user| %>
-    <%= link_to_user_avatar team_user.user, class: 'd-inline-block', title_name: true %>
-  <% end %>
-  </div><!-- /.col -->
-</div><!-- /.row -->
+  
+  <dt class="<%= dynamic_small_column_class %>">Members</dt>
+  <dd class="<%= dynamic_large_column_class %>">
+    <% @team.team_users.each do |team_user| %>
+      <%= link_to_user_avatar team_user.user, class: 'd-inline-block', title_name: true %>
+    <% end %>
+  </dd>
+</dl>
+
 <hr class='my-5'>
 <div class='block-content row'>
   <div class='<%= column_class %>'>

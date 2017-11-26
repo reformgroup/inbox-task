@@ -14,14 +14,14 @@
 #  deleter_id :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :team do
     name { Faker::Commerce.department(3, true).humanize }
     
     factory :team_with_subteam do
       after(:build) do |team|
         # create_list(:team, 3, parent: team)
-        team.parent = FactoryGirl.create(:team)
+        team.parent = FactoryBot.create(:team)
       end
     end
   end

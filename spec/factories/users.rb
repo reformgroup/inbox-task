@@ -23,7 +23,7 @@
 #  deleter_id          :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     last_name { Faker::Name.last_name }
     first_name { Faker::Name.first_name }

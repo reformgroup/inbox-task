@@ -217,7 +217,6 @@ module BootstrapHelper
     option_for_dropdown name, url, options
   end
   
-  
   # Nested Model Form
   def link_to_remove(f, name)
     name = name || remove_icon

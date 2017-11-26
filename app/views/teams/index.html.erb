@@ -1,10 +1,8 @@
 <% provide :title, t('.title') %>
-<% provide :page_live_search, true %>
+<% provide :subtitle, t('activerecord.models.team.name') %>
+<% provide :control, link_to(t('.add_team_link'), new_team_path, class: 'btn btn-outline-primary') %>
 
-<%= render 'content_header', 
-  title: t('.title'), 
-  subtitle: t('activerecord.models.team.name'), 
-  control: link_to(t('.add_team_link'), new_team_path, class: 'btn btn-outline-primary') %>
+<% provide :page_live_search, true %>
 
 <!-- TODO: move code to main_search.html.erb -->
 

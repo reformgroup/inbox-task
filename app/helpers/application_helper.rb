@@ -91,10 +91,28 @@ module ApplicationHelper
     output.html_safe
   end
   
+  def autocomplete_to_add(name, f, association, source, association_attr)
+    new_object = f.object.send(association).klass.new
+    id = new_object.object_id
+    fields = f.fields_for(association, new_object, child_index: id) do |builder|
+      render association.to_s.singularize + "_fields", f: builder
+    end
+    text_field_tag('search_team_users', 
+                    nil, 
+                    class: 'form-control', 
+                    data: { association_attr: association_attr,
+                            source: source,
+                            # new_nested_object_path: new_team_user_teams_path, 
+                            id: id,
+                            fields: fields.gsub("\n", "") })
+    
+    # link_to(name, '#', class: "add_fields", data: { id: id, fields: fields.gsub("\n", "") })
+  end
+  
   def link_to_pre_add(name, f, association)
     new_object  = f.object.class.reflect_on_association(association).klass.new
     fields      = f.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
-      render(association.to_s.singularize + "_fields", f: builder)
+      render association.to_s.singularize + "_fields", f: builder
     end
     # link_to name, '#', onclick: "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"
     link_to name, '#', class: "add-nested-object", data: { link: "this", association: association, content: fields }

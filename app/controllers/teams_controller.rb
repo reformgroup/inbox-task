@@ -61,7 +61,7 @@ class TeamsController < ApplicationController
   # GET /teams/1/search_team_user
   def search_team_user
     @users = User.order(:first_name).where("first_name like ?", "%#{params[:term]}%")
-    render json: @users.map { |u| { value: u.id, label: u.name, email: u.email } }
+    render json: @users.map { |u| { value: u.id, label: u.name, content: render_to_string('_user', locals: { user: u }, layout: false), email: u.email } }
   end
   
   # GET /teams/1/new_team_user

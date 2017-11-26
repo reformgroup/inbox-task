@@ -1,8 +1,6 @@
 <% provide :title, t('.title') %>
-<h6 class="text-muted"><%= t 'activerecord.models.team.name' %></h6>
-<h2><%= t '.title' %></h2>
+<% provide :subtitle, t('activerecord.models.team.name') %>
 
-<hr class="mb-5">
 <%= render('form', user: @team, 
   save_link: submit_tag(t('buttons.save'), class: 'btn btn-primary'), 
   cancel_link: link_to(t('buttons.cancel'), teams_path, class: 'btn btn-link text-muted', role: 'button')) %>

@@ -35,7 +35,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'annotate', '~> 2.7', '>= 2.7.1'
-  gem 'factory_girl_rails', '~> 4.7'
+  gem "factory_bot_rails"
   gem 'faker', '~> 1.6', '>= 1.6.3'
   gem 'rails-controller-testing', git: 'https://github.com/rails/rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
@@ -58,7 +58,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'cocoon'
 gem 'ancestry', '~> 2.2', '>= 2.2.2'
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'paperclip', '~> 5.1'
 gem 'validates_timeliness', '~> 4.0', '>= 4.0.2'

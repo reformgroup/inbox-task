@@ -13,7 +13,7 @@
 #  deleter_id :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :team_user do
     team nil
     user nil
